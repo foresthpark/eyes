@@ -12,7 +12,7 @@ function Contact() {
   return (
     <div className="container mx-auto px-6 py-12 md:py-20">
       <div className="max-w-2xl mx-auto text-center mb-16">
-        <h1 className="text-4xl font-light mb-6">Get in Touch</h1>
+        <h1 className="text-4xl font-semibold mb-6">Get in Touch</h1>
         <p className="text-gray-500 text-lg">
           Whether you're interested in a print, a collaboration, or just want to say hello, I'd love to hear from you.
         </p>

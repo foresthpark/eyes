@@ -16,7 +16,7 @@ function GalleryIndex() {
     <div className="w-full">
       <div className="container mx-auto px-6 py-12 md:py-20">
         <div className="max-w-2xl mb-16">
-          <h1 className="text-4xl font-light mb-6">Gallery</h1>
+          <h1 className="text-4xl font-semibold mb-6">Gallery</h1>
           <p className="text-gray-500 text-lg mb-12">
             My view of the world. Through film and digital photography.
           </p>
