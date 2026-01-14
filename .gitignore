@@ -11,3 +11,6 @@ count.txt
 .output
 .vinxi
 todos.json
+
+# Don't commit large photo files
+public/gallery/

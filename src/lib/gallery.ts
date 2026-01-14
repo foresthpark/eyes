@@ -1,7 +1,5 @@
 import { createServerFn } from '@tanstack/react-start'
-import fs from 'node:fs'
-import path from 'node:path'
-import sizeOf from 'image-size'
+import { listObjects, getPresignedUrl, getObjectMetadata } from './r2'
 
 export interface GalleryPhoto {
   src: string
@@ -17,34 +15,39 @@ export interface GalleryCategory {
   coverPhoto: string
 }
 
-const GALLERY_BASE_PATH = path.join(process.cwd(), 'public', 'gallery')
-
 // Server function to get all gallery categories
 export const getGalleryCategories = createServerFn({ method: 'GET' }).handler(async () => {
   const categories: GalleryCategory[] = []
 
-  if (!fs.existsSync(GALLERY_BASE_PATH)) {
-    return categories
+  // List all objects in the gallery prefix
+  const objects = await listObjects('gallery/')
+
+  // Group objects by category (first folder after gallery/)
+  const categoryMap = new Map<string, string[]>()
+
+  for (const obj of objects) {
+    const match = obj.key.match(/^gallery\/([^/]+)\/(.+)$/)
+    if (match) {
+      const [, categorySlug, filename] = match
+      if (!categoryMap.has(categorySlug)) {
+        categoryMap.set(categorySlug, [])
+      }
+      categoryMap.get(categorySlug)!.push(obj.key)
+    }
   }
 
-  const dirs = fs.readdirSync(GALLERY_BASE_PATH, { withFileTypes: true })
+  // Create category objects with cover photos
+  for (const [slug, photoKeys] of categoryMap.entries()) {
+    if (photoKeys.length > 0) {
+      // Get presigned URL for the first photo as cover
+      const coverPhoto = await getPresignedUrl(photoKeys[0])
 
-  for (const dir of dirs) {
-    if (dir.isDirectory()) {
-      const categoryPath = path.join(GALLERY_BASE_PATH, dir.name)
-      const files = fs.readdirSync(categoryPath)
-        .filter(file => /\.(jpg|jpeg|png|webp)$/i.test(file))
-
-      if (files.length > 0) {
-        const coverPhoto = `/gallery/${dir.name}/${files[0]}`
-
-        categories.push({
-          name: dir.name.charAt(0).toUpperCase() + dir.name.slice(1),
-          slug: dir.name,
-          photoCount: files.length,
-          coverPhoto,
-        })
-      }
+      categories.push({
+        name: slug.charAt(0).toUpperCase() + slug.slice(1),
+        slug,
+        photoCount: photoKeys.length,
+        coverPhoto,
+      })
     }
   }
 
@@ -55,33 +58,33 @@ export const getGalleryCategories = createServerFn({ method: 'GET' }).handler(as
 export const getGalleryPhotos = createServerFn({ method: 'GET' }).handler(
   async (ctx) => {
     const category = ctx.data as string
-    const categoryPath = path.join(GALLERY_BASE_PATH, category)
+    const prefix = `gallery/${category}/`
 
-    if (!fs.existsSync(categoryPath)) {
-      throw new Error(`Gallery category "${category}" not found`)
-    }
-
-    const files = fs.readdirSync(categoryPath)
-      .filter(file => /\.(jpg|jpeg|png|webp)$/i.test(file))
-      .sort()
+    // List all objects in this category
+    const objects = await listObjects(prefix)
 
     const photos: GalleryPhoto[] = []
 
-    for (const file of files) {
-      const filePath = path.join(categoryPath, file)
+    for (const obj of objects) {
       try {
-        const buffer = fs.readFileSync(filePath)
-        const dimensions = sizeOf(buffer)
+        // Get object metadata for dimensions
+        const metadata = await getObjectMetadata(obj.key)
+
+        // Generate presigned URL
+        const signedUrl = await getPresignedUrl(obj.key)
+
+        // Extract filename
+        const filename = obj.key.split('/').pop() || ''
 
         photos.push({
-          src: `/gallery/${category}/${file}`,
-          width: dimensions.width || 1500,
-          height: dimensions.height || 1500,
-          filename: file,
+          src: signedUrl,
+          width: parseInt(metadata.width || '1500', 10),
+          height: parseInt(metadata.height || '1500', 10),
+          filename,
         })
       } catch (error) {
-        console.error(`Error reading dimensions for ${file}:`, error)
-        // Skip files we can't read
+        console.error(`Error processing ${obj.key}:`, error)
+        // Skip files we can't process
       }
     }
 
