@@ -6,6 +6,9 @@ import "yet-another-react-lightbox/styles.css"
 import { useState } from 'react'
 import { getGalleryPhotos } from '../../lib/gallery'
 
+// Ensure images maintain aspect ratio
+import { useEffect } from 'react'
+
 export const Route = createFileRoute('/gallery/$category')({
   component: CategoryGallery,
   loader: async ({ params }) => {
@@ -24,6 +27,12 @@ function CategoryGallery() {
 
   return (
     <div className="w-full">
+      <style>{`
+        .react-photo-album--photo img {
+          object-fit: cover !important;
+          display: block !important;
+        }
+      `}</style>
       <div className="container mx-auto px-6 py-12 md:py-20">
         <div className="mb-8">
           <Link
@@ -56,7 +65,7 @@ function CategoryGallery() {
                   if (containerWidth < 1536) return 3
                   return 4
                 }}
-                spacing={4}
+                spacing={12}
                 padding={0}
               />
             </div>
