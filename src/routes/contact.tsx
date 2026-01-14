@@ -42,7 +42,7 @@ function Contact() {
         {/* Location */}
         <div className="text-center pt-8 border-t border-gray-100">
           <p className="text-xs uppercase tracking-[0.2em] text-gray-400">
-            Oregon, United States
+            Vancouver, Canada
           </p>
         </div>
       </div>
