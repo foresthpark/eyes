@@ -1,25 +1,49 @@
 import { createFileRoute } from '@tanstack/react-router'
 import PhotoAlbum, { Photo } from 'react-photo-album'
+import Lightbox from "yet-another-react-lightbox"
 import "react-photo-album/masonry.css"
+import "yet-another-react-lightbox/styles.css"
+import { useState } from 'react'
 
 export const Route = createFileRoute('/gallery')({
   component: Gallery,
 })
 
-const photos: Photo[] = [
-  { src: 'https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=1200', width: 1200, height: 1600 },
-  { src: 'https://images.unsplash.com/photo-1426604966848-d7adac402bff?q=80&w=1200', width: 1200, height: 800 },
-  { src: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1200', width: 1200, height: 1500 },
-  { src: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1200', width: 1200, height: 800 },
-  { src: 'https://plus.unsplash.com/premium_photo-1768241560249-9e452c219952?q=80&w=685&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?q=80&w=1200', width: 1200, height: 800 },
-  { src: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=1200', width: 1200, height: 900 },
-  // { src: 'https://images.unsplash.com/photo-1500627760128-09026402ec94?q=80&w=1200', width: 1200, height: 1600 },
-  // { src: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1200', width: 1200, height: 800 },
-  // { src: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=1200', width: 1200, height: 800 },
-  { src: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=1200', width: 1200, height: 900 },
+const filmPhotos: Photo[] = [
+  { src: '/gallery/film/DSC_0055.jpg', width: 3497, height: 3554 },
+  { src: '/gallery/film/DSC_0071.jpg', width: 2585, height: 3514 },
+  { src: '/gallery/film/DSC_0096-Edit-instagram.jpg', width: 1500, height: 2236 },
+  { src: '/gallery/film/DSC_0184-instagram.jpg', width: 1500, height: 2233 },
+  { src: '/gallery/film/DSC_0219-instagram.jpg', width: 1500, height: 2203 },
+  { src: '/gallery/film/DSC_0296-Edit-Edit-instagram.jpg', width: 1500, height: 2234 },
+  { src: '/gallery/film/DSC_0324-Edit-instagram.jpg', width: 1500, height: 2233 },
+  { src: '/gallery/film/DSCF1612.jpg', width: 2979, height: 2979 },
+  { src: '/gallery/film/DSCF1619.jpg', width: 2969, height: 2969 },
+  { src: '/gallery/film/DSCF3363-Edit-2-instagram.jpg', width: 1500, height: 1500 },
+]
+
+const digitalPhotos: Photo[] = [
+  { src: '/gallery/digital/DSCF3211-Edit-instagram.jpg', width: 1500, height: 1010 },
+  { src: '/gallery/digital/DSCF3447-Edit-instagram.jpg', width: 1500, height: 1000 },
+  { src: '/gallery/digital/DSCF3563-Edit-instagram.jpg', width: 1500, height: 2250 },
+  { src: '/gallery/digital/DSCF3569-Edit-instagram.jpg', width: 1500, height: 919 },
+  { src: '/gallery/digital/DSCF3573-Edit-instagram.jpg', width: 1500, height: 2250 },
 ]
 
 function Gallery() {
+  const [index, setIndex] = useState(-1)
+  const [currentPhotos, setCurrentPhotos] = useState<Photo[]>(filmPhotos)
+
+  const handleFilmClick = ({ index: photoIndex }: { index: number }) => {
+    setCurrentPhotos(filmPhotos)
+    setIndex(photoIndex)
+  }
+
+  const handleDigitalClick = ({ index: photoIndex }: { index: number }) => {
+    setCurrentPhotos(digitalPhotos)
+    setIndex(photoIndex)
+  }
+
   return (
     <div className="w-full">
       <div className="container mx-auto px-6 py-12 md:py-20">
@@ -29,21 +53,54 @@ function Gallery() {
             A collection of moments captured in the wild. Each image tells a story of serenity and power found only in the heart of nature.
           </p>
         </div>
-        
-        <div className="w-full">
-          <PhotoAlbum
-            layout="masonry"
-            photos={photos}
-            columns={(containerWidth) => {
-              if (containerWidth < 640) return 1
-              if (containerWidth < 1024) return 2
-              if (containerWidth < 1536) return 3
-              return 4
-            }}
-            spacing={4}
-            padding={0}
-          />
+
+        {/* Film Gallery */}
+        <div className="mb-20">
+          <h2 className="text-3xl font-light mb-8">Film</h2>
+          <div className="w-full">
+            <PhotoAlbum
+              layout="masonry"
+              photos={filmPhotos}
+              onClick={handleFilmClick}
+              columns={(containerWidth) => {
+                if (containerWidth < 640) return 1
+                if (containerWidth < 1024) return 2
+                if (containerWidth < 1536) return 3
+                return 4
+              }}
+              spacing={4}
+              padding={0}
+            />
+          </div>
         </div>
+
+        {/* Digital Gallery */}
+        <div>
+          <h2 className="text-3xl font-light mb-8">Digital</h2>
+          <div className="w-full">
+            <PhotoAlbum
+              layout="masonry"
+              photos={digitalPhotos}
+              onClick={handleDigitalClick}
+              columns={(containerWidth) => {
+                if (containerWidth < 640) return 1
+                if (containerWidth < 1024) return 2
+                if (containerWidth < 1536) return 3
+                return 4
+              }}
+              spacing={4}
+              padding={0}
+            />
+          </div>
+        </div>
+
+        {/* Lightbox */}
+        <Lightbox
+          slides={currentPhotos}
+          open={index >= 0}
+          index={index}
+          close={() => setIndex(-1)}
+        />
       </div>
     </div>
   )
