@@ -18,7 +18,7 @@ function About() {
           </p>
           <div className="pt-8">
             <h3 className="text-sm font-semibold uppercase tracking-widest text-black mb-4">Equipment</h3>
-            <ul className="grid grid-cols-2 gap-2 text-sm">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
               <li>Hasselblad 501CM</li>
               <li>Nikon FM3A</li>
               <li>Pentax 645NII</li>
