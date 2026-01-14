@@ -40,7 +40,7 @@ function Gallery() {
               if (containerWidth < 1536) return 3
               return 4
             }}
-            spacing={16}
+            spacing={4}
             padding={0}
           />
         </div>
