@@ -95,3 +95,27 @@ export const getGalleryPhotos = createServerFn({ method: 'GET' }).handler(
     }
   }
 )
+
+// Server function to get a random photo for homepage hero
+export const getRandomHeroPhoto = createServerFn({ method: 'GET' }).handler(async () => {
+  // List all photos from all categories
+  const objects = await listObjects('gallery/')
+
+  if (objects.length === 0) {
+    return null
+  }
+
+  // Pick a random photo
+  const randomIndex = Math.floor(Math.random() * objects.length)
+  const randomPhoto = objects[randomIndex]
+
+  // Get metadata and presigned URL
+  const metadata = await getObjectMetadata(randomPhoto.key)
+  const signedUrl = await getPresignedUrl(randomPhoto.key)
+
+  return {
+    src: signedUrl,
+    width: parseInt(metadata.width || '1920', 10),
+    height: parseInt(metadata.height || '1080', 10),
+  }
+})
