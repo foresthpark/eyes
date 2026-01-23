@@ -23,6 +23,7 @@ async function uploadPhotosToR2() {
   let totalUploaded = 0
   let totalSkipped = 0
   let totalErrors = 0
+  const uploadedFiles: string[] = []
 
   for (const category of categories) {
     console.log(`\n📁 Processing category: ${category}`)
@@ -65,6 +66,7 @@ async function uploadPhotosToR2() {
         const fileSize = (fs.statSync(filePath).size / 1024 / 1024).toFixed(2)
         console.log(`✅ Uploaded: ${file} (${fileSize}MB, ${dimensions.width}x${dimensions.height})`)
         totalUploaded++
+        uploadedFiles.push(filePath)
       } catch (error) {
         console.error(`❌ Error uploading ${file}:`, error)
         totalErrors++
@@ -72,16 +74,28 @@ async function uploadPhotosToR2() {
     }
   }
 
+  // Delete uploaded files
+  let totalDeleted = 0
+  for (const filePath of uploadedFiles) {
+    try {
+      fs.unlinkSync(filePath)
+      totalDeleted++
+    } catch (error) {
+      console.error(`❌ Error deleting ${filePath}:`, error)
+    }
+  }
+
   console.log('\n' + '='.repeat(50))
   console.log('📊 Upload Summary:')
   console.log('='.repeat(50))
   console.log(`✅ Uploaded: ${totalUploaded}`)
+  console.log(`🗑️  Deleted:  ${totalDeleted}`)
   console.log(`⏭️  Skipped:  ${totalSkipped}`)
   console.log(`❌ Errors:   ${totalErrors}`)
   console.log('='.repeat(50))
 
   if (totalUploaded > 0) {
-    console.log('\n✨ Photos successfully uploaded to Cloudflare R2!')
+    console.log('\n✨ Photos successfully uploaded to Cloudflare R2 and deleted locally!')
     console.log('You can now view them in your R2 dashboard.')
   }
 
