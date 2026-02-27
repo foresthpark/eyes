@@ -3,11 +3,9 @@ import PhotoAlbum from 'react-photo-album'
 import Lightbox from "yet-another-react-lightbox"
 import "react-photo-album/masonry.css"
 import "yet-another-react-lightbox/styles.css"
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { getGalleryPhotos } from '../../lib/gallery'
-
-// Ensure images maintain aspect ratio
-import { useEffect } from 'react'
+import { GallerySkeleton } from '../../components/LoadingSkeleton'
 
 export const Route = createFileRoute('/gallery/$category')({
   component: CategoryGallery,
@@ -15,7 +13,7 @@ export const Route = createFileRoute('/gallery/$category')({
     try {
       const data = await getGalleryPhotos({ data: params.category })
       return data
-    } catch (error) {
+    } catch {
       throw notFound()
     }
   },
@@ -24,6 +22,13 @@ export const Route = createFileRoute('/gallery/$category')({
 function CategoryGallery() {
   const { categoryName, photos } = Route.useLoaderData()
   const [index, setIndex] = useState(-1)
+
+  // Enhance photos with lazy loading support
+  const optimizedPhotos = photos.map((photo) => ({
+    ...photo,
+    loading: 'lazy' as const,
+    fetchPriority: 'auto' as const,
+  }))
 
   return (
     <div className="w-full">
@@ -54,21 +59,23 @@ function CategoryGallery() {
           <p className="text-gray-500">No photos found in this gallery.</p>
         ) : (
           <>
-            <div className="w-full">
-              <PhotoAlbum
-                layout="masonry"
-                photos={photos}
-                onClick={({ index: photoIndex }) => setIndex(photoIndex)}
-                columns={(containerWidth) => {
-                  if (containerWidth < 640) return 1
-                  if (containerWidth < 1024) return 2
-                  if (containerWidth < 1536) return 3
-                  return 4
-                }}
-                spacing={12}
-                padding={0}
-              />
-            </div>
+            <Suspense fallback={<GallerySkeleton />}>
+              <div className="w-full">
+                <PhotoAlbum
+                  layout="masonry"
+                  photos={optimizedPhotos}
+                  onClick={({ index: photoIndex }) => setIndex(photoIndex)}
+                  columns={(containerWidth) => {
+                    if (containerWidth < 640) return 1
+                    if (containerWidth < 1024) return 2
+                    if (containerWidth < 1536) return 3
+                    return 4
+                  }}
+                  spacing={12}
+                  padding={0}
+                />
+              </div>
+            </Suspense>
 
             <Lightbox
               slides={photos}

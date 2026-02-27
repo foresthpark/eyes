@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { ArrowRight } from 'lucide-react'
 import { getRandomHeroPhoto } from '../lib/gallery'
+import { OptimizedImage } from '../components/OptimizedImage'
 
 export const Route = createFileRoute('/')({
   component: Home,
@@ -20,10 +21,11 @@ function Home() {
   return (
     <div className="relative min-h-[calc(100vh-64px)] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <img
+        <OptimizedImage
           src={backgroundImage}
           alt="Forest backdrop"
-          className="w-full h-full object-cover brightness-75 transition-transform duration-1000 hover:scale-105"
+          className="w-full h-full brightness-75 transition-transform duration-1000 hover:scale-105"
+          loading="eager"
         />
       </div>
       

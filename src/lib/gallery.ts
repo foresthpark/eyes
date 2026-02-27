@@ -28,11 +28,14 @@ export const getGalleryCategories = createServerFn({ method: 'GET' }).handler(as
   for (const obj of objects) {
     const match = obj.key.match(/^gallery\/([^/]+)\/(.+)$/)
     if (match) {
-      const [, categorySlug, filename] = match
+      const [, categorySlug] = match
       if (!categoryMap.has(categorySlug)) {
         categoryMap.set(categorySlug, [])
       }
-      categoryMap.get(categorySlug)!.push(obj.key)
+      const categoryKeys = categoryMap.get(categorySlug)
+      if (categoryKeys) {
+        categoryKeys.push(obj.key)
+      }
     }
   }
 
@@ -55,9 +58,10 @@ export const getGalleryCategories = createServerFn({ method: 'GET' }).handler(as
 })
 
 // Server function to get photos for a specific category
-export const getGalleryPhotos = createServerFn({ method: 'GET' }).handler(
-  async (ctx) => {
-    const category = ctx.data as string
+export const getGalleryPhotos = createServerFn({ method: 'GET' })
+  .inputValidator((data: string) => data)
+  .handler(async ({ data }) => {
+    const category = data
     const prefix = `gallery/${category}/`
 
     // List all objects in this category
