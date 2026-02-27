@@ -64,17 +64,17 @@ export function OptimizedImage({
   if (hasError) {
     return (
       <div
-        className={`bg-gray-100 flex flex-col items-center justify-center gap-2 ${className}`}
+        className={`bg-gray-100 dark:bg-gray-800 flex flex-col items-center justify-center gap-2 ${className}`}
         style={{ width, height }}
         role="img"
         aria-label={`${alt} - Failed to load`}
       >
-        <span className="text-gray-400 text-sm">Failed to load image</span>
+        <span className="text-gray-400 dark:text-gray-300 text-sm">Failed to load image</span>
         {retryCount < 3 && (
           <button
             type="button"
             onClick={handleRetry}
-            className="text-xs text-gray-600 hover:text-black underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 rounded"
+            className="text-xs text-gray-600 dark:text-gray-200 hover:text-black dark:hover:text-white underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2 rounded"
             aria-label={`Retry loading ${alt}`}
           >
             Retry

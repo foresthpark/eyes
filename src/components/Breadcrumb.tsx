@@ -67,9 +67,9 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
               itemType="https://schema.org/ListItem"
             >
               {index === 0 ? (
-                <Home className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" />
+                <Home className="w-4 h-4 text-gray-500 dark:text-gray-300" aria-hidden="true" />
               ) : (
-                <ChevronRight className="w-4 h-4 text-gray-400 dark:text-gray-500" aria-hidden="true" />
+                <ChevronRight className="w-4 h-4 text-gray-400 dark:text-gray-300" aria-hidden="true" />
               )}
               
               {isLast ? (
@@ -83,13 +83,13 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
               ) : item.href ? (
                 <Link
                   to={item.href as '/' | '/gallery' | '/about' | '/contact'}
-                  className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2 rounded"
+                  className="text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2 rounded"
                   itemProp="item"
                 >
                   <span itemProp="name">{item.label}</span>
                 </Link>
               ) : (
-                <span className="text-gray-500 dark:text-gray-400" itemProp="name">
+                <span className="text-gray-500 dark:text-gray-300" itemProp="name">
                   {item.label}
                 </span>
               )}

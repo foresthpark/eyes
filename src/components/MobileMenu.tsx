@@ -27,7 +27,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       >
         <div className="container mx-auto px-4 py-6 space-y-4">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400">
+            <span className="text-xs uppercase tracking-widest text-gray-500 dark:text-gray-300">
               Menu
             </span>
             <button
@@ -44,7 +44,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <Link
               to="/gallery"
               onClick={onClose}
-              className="block px-4 py-3 text-base font-medium text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2"
+              className="block px-4 py-3 text-base font-medium text-gray-600 dark:text-gray-200 hover:text-black dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2"
               activeProps={{ className: 'text-black dark:text-white font-semibold bg-gray-50 dark:bg-gray-800' }}
               aria-current="page"
             >
@@ -53,7 +53,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <Link
               to="/about"
               onClick={onClose}
-              className="block px-4 py-3 text-base font-medium text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2"
+              className="block px-4 py-3 text-base font-medium text-gray-600 dark:text-gray-200 hover:text-black dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2"
               activeProps={{ className: 'text-black dark:text-white font-semibold bg-gray-50 dark:bg-gray-800' }}
               aria-current="page"
             >
@@ -62,7 +62,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <Link
               to="/contact"
               onClick={onClose}
-              className="block px-4 py-3 text-base font-medium text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2"
+              className="block px-4 py-3 text-base font-medium text-gray-600 dark:text-gray-200 hover:text-black dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2"
               activeProps={{ className: 'text-black dark:text-white font-semibold bg-gray-50 dark:bg-gray-800' }}
               aria-current="page"
             >
@@ -72,7 +72,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           
           <div className="pt-4 border-t border-gray-100 dark:border-gray-800">
             <div className="flex items-center justify-between px-4">
-              <span className="text-sm text-gray-600 dark:text-gray-400">Theme</span>
+              <span className="text-sm text-gray-600 dark:text-gray-200">Theme</span>
               <ThemeToggle />
             </div>
           </div>

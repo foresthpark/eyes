@@ -19,9 +19,9 @@ export function ErrorDisplay({
       role="alert"
       aria-live="polite"
     >
-      <AlertCircle className="w-12 h-12 text-gray-400 mb-4" aria-hidden="true" />
-      <h2 className="text-xl font-semibold mb-2">{title}</h2>
-      <p className="text-gray-500 mb-6 max-w-md">{message}</p>
+      <AlertCircle className="w-12 h-12 text-gray-400 dark:text-gray-300 mb-4" aria-hidden="true" />
+      <h2 className="text-xl font-semibold mb-2 dark:text-white">{title}</h2>
+      <p className="text-gray-500 dark:text-gray-300 mb-6 max-w-md">{message}</p>
       {onRetry && (
         <button
           onClick={onRetry}

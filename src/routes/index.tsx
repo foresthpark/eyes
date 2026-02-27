@@ -2,6 +2,7 @@ import { createFileRoute, Link } from '@tanstack/react-router'
 import { ArrowRight } from 'lucide-react'
 import { getRandomHeroPhoto } from '../lib/gallery'
 import { OptimizedImage } from '../components/OptimizedImage'
+import { generateMetaTags, generateCanonicalUrl } from '../lib/seo'
 
 export const Route = createFileRoute('/')({
   component: Home,
@@ -9,6 +10,23 @@ export const Route = createFileRoute('/')({
     const heroPhoto = await getRandomHeroPhoto()
     return { heroPhoto }
   },
+  head: () => ({
+    meta: [
+      {
+        title: 'Eyes of Forest | Photography Portfolio',
+      },
+      ...generateMetaTags({
+        description:
+          'Photography portfolio showcasing my view of the world through film and digital photography. Explore galleries of nature, landscapes, and life moments.',
+      }),
+    ],
+    links: [
+      {
+        rel: 'canonical',
+        href: generateCanonicalUrl('/'),
+      },
+    ],
+  }),
 })
 
 function Home() {

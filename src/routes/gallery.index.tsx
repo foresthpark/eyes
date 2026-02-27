@@ -5,6 +5,7 @@ import { OptimizedImage } from '../components/OptimizedImage'
 import { CategoryCardSkeleton } from '../components/LoadingSkeleton'
 import { ErrorDisplay } from '../components/ErrorDisplay'
 import { Breadcrumb } from '../components/Breadcrumb'
+import { generateMetaTags, generateCanonicalUrl } from '../lib/seo'
 
 export const Route = createFileRoute('/gallery/')({
   component: GalleryIndex,
@@ -12,6 +13,23 @@ export const Route = createFileRoute('/gallery/')({
     const categories = await getGalleryCategories()
     return { categories }
   },
+  head: () => ({
+    meta: [
+      {
+        title: 'Gallery | Eyes of Forest',
+      },
+      ...generateMetaTags({
+        description:
+          'Browse photography galleries organized by category. Explore collections of nature, landscapes, and life moments captured through film and digital photography.',
+      }),
+    ],
+    links: [
+      {
+        rel: 'canonical',
+        href: generateCanonicalUrl('/gallery'),
+      },
+    ],
+  }),
 })
 
 function GalleryIndex() {
@@ -23,14 +41,14 @@ function GalleryIndex() {
         <Breadcrumb />
         <header className="max-w-2xl mb-16">
           <h1 className="text-4xl font-semibold mb-6 dark:text-white">Gallery</h1>
-          <p className="text-gray-500 dark:text-gray-400 text-lg mb-12">
+          <p className="text-gray-500 dark:text-gray-300 text-lg mb-12">
             My view of the world. Through film and digital photography.
           </p>
         </header>
 
         {categories.length === 0 ? (
           <div>
-            <p className="text-gray-500" role="status" aria-live="polite">
+            <p className="text-gray-500 dark:text-gray-300" role="status" aria-live="polite">
               No galleries found.
             </p>
           </div>

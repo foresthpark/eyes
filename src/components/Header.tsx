@@ -60,7 +60,7 @@ export default function Header() {
           <nav aria-label="Main navigation" className="hidden md:flex items-center gap-4 sm:gap-6 md:gap-8">
             <Link
               to="/gallery"
-              className="text-xs sm:text-sm font-medium text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2 rounded"
+              className="text-xs sm:text-sm font-medium text-gray-600 hover:text-black dark:text-gray-200 dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2 rounded"
               activeProps={{ className: 'text-black dark:text-white font-semibold' }}
               aria-current="page"
             >
@@ -68,7 +68,7 @@ export default function Header() {
             </Link>
             <Link
               to="/about"
-              className="text-xs sm:text-sm font-medium text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2 rounded"
+              className="text-xs sm:text-sm font-medium text-gray-600 hover:text-black dark:text-gray-200 dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2 rounded"
               activeProps={{ className: 'text-black dark:text-white font-semibold' }}
               aria-current="page"
             >
@@ -76,7 +76,7 @@ export default function Header() {
             </Link>
             <Link
               to="/contact"
-              className="text-xs sm:text-sm font-medium text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2 rounded"
+              className="text-xs sm:text-sm font-medium text-gray-600 hover:text-black dark:text-gray-200 dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2 rounded"
               activeProps={{ className: 'text-black dark:text-white font-semibold' }}
               aria-current="page"
             >

@@ -3,6 +3,7 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 import { ErrorBoundary } from '../components/ErrorBoundary'
 import { PageTransition } from '../components/PageTransition'
+import { defaultSiteMetadata, generateMetaTags, generateCanonicalUrl } from '../lib/seo'
 
 import Header from '../components/Header'
 
@@ -21,11 +22,28 @@ export const Route = createRootRoute({
       {
         title: 'Eyes of Forest::林 | How I See the World',
       },
+      ...generateMetaTags({
+        description: defaultSiteMetadata.description,
+        keywords: defaultSiteMetadata.keywords,
+        author: defaultSiteMetadata.author,
+      }),
+      {
+        name: 'theme-color',
+        content: '#000000',
+      },
     ],
     links: [
       {
         rel: 'stylesheet',
         href: appCss,
+      },
+      {
+        rel: 'canonical',
+        href: generateCanonicalUrl('/'),
+      },
+      {
+        rel: 'icon',
+        href: '/favicon.ico',
       },
     ],
   }),
@@ -33,11 +51,11 @@ export const Route = createRootRoute({
   shellComponent: RootDocument,
   notFoundComponent: () => (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-64px)] px-6 text-center" role="alert">
-      <h1 className="text-6xl font-light mb-4">404</h1>
-      <p className="text-xl text-gray-500 mb-8">The page you are looking for does not exist.</p>
+      <h1 className="text-6xl font-light mb-4 dark:text-white">404</h1>
+      <p className="text-xl text-gray-500 dark:text-gray-300 mb-8">The page you are looking for does not exist.</p>
       <Link
         to="/"
-        className="px-8 py-3 bg-black text-white hover:bg-gray-900 transition-colors uppercase tracking-widest text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 rounded"
+        className="px-8 py-3 bg-black dark:bg-white text-white dark:text-black hover:bg-gray-900 dark:hover:bg-gray-200 transition-colors uppercase tracking-widest text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2 rounded"
         aria-label="Go to home page"
       >
         Go Home

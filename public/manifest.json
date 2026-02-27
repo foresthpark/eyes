@@ -1,6 +1,7 @@
 {
-  "short_name": "TanStack App",
-  "name": "Create TanStack App Sample",
+  "short_name": "Eyes of Forest",
+  "name": "Eyes of Forest Photography Portfolio",
+  "description": "Photography portfolio showcasing my view of the world through film and digital photography",
   "icons": [
     {
       "src": "favicon.ico",
