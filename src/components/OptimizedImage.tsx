@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 interface OptimizedImageProps {
   src: string
@@ -26,9 +26,12 @@ export function OptimizedImage({
 }: OptimizedImageProps) {
   const [isLoading, setIsLoading] = useState(true)
   const [hasError, setHasError] = useState(false)
+  const [retryCount, setRetryCount] = useState(0)
+  const [currentSrc, setCurrentSrc] = useState(src)
 
   const handleLoad = () => {
     setIsLoading(false)
+    setHasError(false)
     onLoad?.()
   }
 
@@ -38,13 +41,45 @@ export function OptimizedImage({
     onError?.()
   }
 
+  const handleRetry = () => {
+    if (retryCount < 3) {
+      setRetryCount((prev) => prev + 1)
+      setHasError(false)
+      setIsLoading(true)
+      // Force reload by adding a cache-busting parameter
+      setCurrentSrc(`${src}${src.includes('?') ? '&' : '?'}retry=${retryCount + 1}&t=${Date.now()}`)
+    }
+  }
+
+  // Reset currentSrc when src prop changes
+  useEffect(() => {
+    if (src !== currentSrc && !currentSrc.includes('retry=')) {
+      setCurrentSrc(src)
+      setRetryCount(0)
+      setIsLoading(true)
+      setHasError(false)
+    }
+  }, [src, currentSrc])
+
   if (hasError) {
     return (
       <div
-        className={`bg-gray-100 flex items-center justify-center ${className}`}
+        className={`bg-gray-100 flex flex-col items-center justify-center gap-2 ${className}`}
         style={{ width, height }}
+        role="img"
+        aria-label={`${alt} - Failed to load`}
       >
-        <span className="text-gray-400 text-sm">Failed to load</span>
+        <span className="text-gray-400 text-sm">Failed to load image</span>
+        {retryCount < 3 && (
+          <button
+            type="button"
+            onClick={handleRetry}
+            className="text-xs text-gray-600 hover:text-black underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 rounded"
+            aria-label={`Retry loading ${alt}`}
+          >
+            Retry
+          </button>
+        )}
       </div>
     )
   }
@@ -63,7 +98,7 @@ export function OptimizedImage({
       
       {/* Actual image */}
       <img
-        src={src}
+        src={currentSrc}
         alt={alt}
         width={width}
         height={height}
