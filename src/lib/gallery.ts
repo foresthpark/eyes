@@ -6,6 +6,8 @@ export interface GalleryPhoto {
   width: number
   height: number
   filename: string
+  title?: string
+  description?: string
 }
 
 export interface GalleryCategory {
@@ -85,6 +87,8 @@ export const getGalleryPhotos = createServerFn({ method: 'GET' })
           width: parseInt(metadata.width || '1500', 10),
           height: parseInt(metadata.height || '1500', 10),
           filename,
+          title: metadata.title || metadata.caption || undefined,
+          description: metadata.description || undefined,
         })
       } catch (error) {
         console.error(`Error processing ${obj.key}:`, error)

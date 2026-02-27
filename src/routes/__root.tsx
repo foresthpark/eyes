@@ -2,6 +2,7 @@ import { HeadContent, Link, Scripts, createRootRoute } from '@tanstack/react-rou
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 import { ErrorBoundary } from '../components/ErrorBoundary'
+import { PageTransition } from '../components/PageTransition'
 
 import Header from '../components/Header'
 
@@ -51,9 +52,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className="antialiased text-gray-900 bg-white">
+      <body className="antialiased text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-900 transition-colors duration-200">
         {/* Skip to main content link for screen readers */}
-        {/* biome-ignore lint/a11y/noStaticElementId: Skip link requires static ID */}
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-100 focus:px-4 focus:py-2 focus:bg-black focus:text-white focus:rounded focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
@@ -62,8 +62,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         </a>
         <ErrorBoundary>
           <Header />
-          {/* biome-ignore lint/a11y/noStaticElementId: Skip link target requires static ID */}
-          <main id="main-content">{children}</main>
+          <main id="main-content" className="min-h-[calc(100vh-64px)]">
+            <PageTransition>{children}</PageTransition>
+          </main>
         </ErrorBoundary>
         <TanStackDevtools
           config={{

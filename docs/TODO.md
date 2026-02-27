@@ -8,7 +8,7 @@ This document tracks all recommended improvements for the Eyes of Forest photogr
 
 - [ ] Add Open Graph and Twitter Card meta tags for better social sharing
 - [ ] Add meta descriptions for each page (home, gallery, about, contact)
-- [ ] Add JSON-LD structured data for images and gallery
+- [x] Add JSON-LD structured data for images and gallery
 - [ ] Add social sharing buttons for individual photos
 
 ### Image Optimization & Performance
@@ -21,8 +21,8 @@ This document tracks all recommended improvements for the Eyes of Forest photogr
 
 ### Mobile Experience
 
-- [ ] Add mobile hamburger menu for navigation
-- [ ] Improve touch interactions for mobile lightbox experience
+- [x] Add mobile hamburger menu for navigation
+- [x] Improve touch interactions for mobile lightbox experience
 
 ### Accessibility
 
@@ -45,7 +45,7 @@ This document tracks all recommended improvements for the Eyes of Forest photogr
 - [ ] Add search functionality for galleries and photos
 - [ ] Add sorting options (date, name, etc.) for photos
 - [ ] Display photo metadata (EXIF data, date taken) in lightbox
-- [ ] Add breadcrumb navigation for better UX
+- [x] Add breadcrumb navigation for better UX
 
 ### PWA Enhancements
 
@@ -67,9 +67,9 @@ This document tracks all recommended improvements for the Eyes of Forest photogr
 ### User Experience
 
 - [x] Add keyboard shortcuts (arrow keys for lightbox navigation)
-- [ ] Add photo descriptions/captions support
-- [ ] Add dark mode support
-- [ ] Add smooth page transitions and micro-interactions
+- [x] Add photo descriptions/captions support
+- [x] Add dark mode support
+- [x] Add smooth page transitions and micro-interactions
 
 ---
 

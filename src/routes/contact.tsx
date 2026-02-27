@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { Breadcrumb } from '../components/Breadcrumb'
 
 export const Route = createFileRoute('/contact')({
   component: Contact,
@@ -7,6 +8,7 @@ export const Route = createFileRoute('/contact')({
 function Contact() {
   return (
     <div className="container mx-auto px-6 py-12 md:py-20">
+      <Breadcrumb />
       <div className="max-w-2xl mx-auto text-center mb-16">
         <h1 className="text-4xl font-light mb-6">Get in Touch</h1>
         <p className="text-gray-500 text-lg">

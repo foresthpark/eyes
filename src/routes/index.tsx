@@ -38,10 +38,10 @@ function Home() {
         </p>
         <Link
           to="/gallery"
-          className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black hover:bg-black hover:text-white transition-all duration-300 rounded-none font-medium uppercase tracking-widest text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+          className="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-gray-800 text-black dark:text-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-300 rounded-none font-medium uppercase tracking-widest text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white dark:focus-visible:ring-gray-800 focus-visible:ring-offset-2 focus-visible:ring-offset-black dark:focus-visible:ring-offset-white transform hover:scale-105 active:scale-95"
           aria-label="View portfolio gallery"
         >
-          View Portfolio <ArrowRight size={16} aria-hidden="true" />
+          View Portfolio <ArrowRight size={16} aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1" />
         </Link>
       </div>
     </div>

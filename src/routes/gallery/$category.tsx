@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from '@tanstack/react-router'
+import { createFileRoute, notFound } from '@tanstack/react-router'
 import PhotoAlbum from 'react-photo-album'
 import Lightbox from "yet-another-react-lightbox"
 import "react-photo-album/masonry.css"
@@ -6,6 +6,7 @@ import "yet-another-react-lightbox/styles.css"
 import { useState, Suspense, useEffect } from 'react'
 import { getGalleryPhotos } from '../../lib/gallery'
 import { GallerySkeleton } from '../../components/LoadingSkeleton'
+import { Breadcrumb } from '../../components/Breadcrumb'
 
 export const Route = createFileRoute('/gallery/$category')({
   component: CategoryGallery,
@@ -22,6 +23,7 @@ export const Route = createFileRoute('/gallery/$category')({
 function CategoryGallery() {
   const { categoryName, photos } = Route.useLoaderData()
   const [index, setIndex] = useState(-1)
+  const [lightboxIndex, setLightboxIndex] = useState(0)
 
   // Enhance photos with lazy loading support
   const optimizedPhotos = photos.map((photo) => ({
@@ -30,23 +32,12 @@ function CategoryGallery() {
     fetchPriority: 'auto' as const,
   }))
 
-  // Keyboard navigation for lightbox
+  // When opening lightbox, sync the lightbox index
   useEffect(() => {
-    if (index < 0) return
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setIndex(-1)
-      } else if (e.key === 'ArrowLeft') {
-        setIndex((prev) => (prev > 0 ? prev - 1 : photos.length - 1))
-      } else if (e.key === 'ArrowRight') {
-        setIndex((prev) => (prev < photos.length - 1 ? prev + 1 : 0))
-      }
+    if (index >= 0) {
+      setLightboxIndex(index)
     }
-
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [index, photos.length])
+  }, [index])
 
   return (
     <div className="w-full">
@@ -57,26 +48,24 @@ function CategoryGallery() {
         }
       `}</style>
       <div className="container mx-auto px-6 py-12 md:py-20">
-        <nav aria-label="Breadcrumb" className="mb-8">
-          <Link
-            to="/gallery"
-            className="text-gray-500 hover:text-gray-700 transition-colors inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 rounded"
-            aria-label="Back to gallery"
-          >
-            ← Back to Gallery
-          </Link>
-        </nav>
+        <Breadcrumb
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Gallery', href: '/gallery' },
+            { label: categoryName },
+          ]}
+        />
 
         <header className="max-w-2xl mb-16">
-          <h1 className="text-4xl font-light mb-6">{categoryName}</h1>
-          <p className="text-gray-500 text-lg" aria-live="polite">
+          <h1 className="text-4xl font-light mb-6 dark:text-white">{categoryName}</h1>
+          <p className="text-gray-500 dark:text-gray-400 text-lg" aria-live="polite">
             {photos.length} {photos.length === 1 ? 'photo' : 'photos'}
           </p>
         </header>
 
         {photos.length === 0 ? (
           <div>
-            <p className="text-gray-500" role="status" aria-live="polite">
+            <p className="text-gray-500 dark:text-gray-400" aria-live="polite">
               No photos found in this gallery.
             </p>
           </div>
@@ -101,33 +90,37 @@ function CategoryGallery() {
             </Suspense>
 
             <Lightbox
-              slides={photos}
+              slides={photos.map((photo) => ({
+                src: photo.src,
+                width: photo.width,
+                height: photo.height,
+                title: photo.title,
+                description: photo.description,
+              }))}
               open={index >= 0}
-              index={index}
+              index={lightboxIndex}
               close={() => setIndex(-1)}
-              controller={{ closeOnBackdropClick: true }}
-              render={{
-                buttonPrev: () => (
-                  <button
-                    type="button"
-                    className="yarl__button yarl__button_prev"
-                    aria-label="Previous photo"
-                  />
-                ),
-                buttonNext: () => (
-                  <button
-                    type="button"
-                    className="yarl__button yarl__button_next"
-                    aria-label="Next photo"
-                  />
-                ),
-                buttonClose: () => (
-                  <button
-                    type="button"
-                    className="yarl__button yarl__button_close"
-                    aria-label="Close lightbox"
-                  />
-                ),
+              on={{
+                view: ({ index: newIndex }) => {
+                  // Update lightbox index when navigating
+                  setLightboxIndex(newIndex)
+                },
+              }}
+              controller={{ 
+                closeOnBackdropClick: true,
+                closeOnPullDown: true,
+                closeOnPullUp: true,
+              }}
+              carousel={{
+                finite: false,
+                preload: 2,
+                spacing: 0,
+                padding: 0,
+              }}
+              animation={{
+                swipe: 250,
+                fade: 300,
+                navigation: 300,
               }}
             />
           </>

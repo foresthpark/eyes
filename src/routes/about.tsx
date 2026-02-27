@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import PageSection from '../components/PageSection'
+import { Breadcrumb } from '../components/Breadcrumb'
 
 export const Route = createFileRoute('/about')({
   component: About,
@@ -8,6 +9,7 @@ export const Route = createFileRoute('/about')({
 function About() {
   return (
     <div className="container mx-auto px-6 py-12 md:py-20">
+      <Breadcrumb />
       <div>
         <PageSection title="About Me">
           <p>
