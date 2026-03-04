@@ -58,6 +58,38 @@ export function generateMetaTags(options: {
 }
 
 /**
+ * Generate Open Graph and Twitter Card meta tags
+ */
+export function generateOgTags(options: {
+  title: string
+  description: string
+  url: string
+  type?: string
+  image?: string
+}): Array<{ property?: string; name?: string; content: string }> {
+  const {
+    title,
+    description,
+    url,
+    type = 'website',
+    image = `${getSiteUrl()}/logo512.png`,
+  } = options
+
+  return [
+    { property: 'og:title', content: title },
+    { property: 'og:description', content: description },
+    { property: 'og:url', content: url },
+    { property: 'og:type', content: type },
+    { property: 'og:site_name', content: 'Eyes of Forest' },
+    { property: 'og:image', content: image },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: title },
+    { name: 'twitter:description', content: description },
+    { name: 'twitter:image', content: image },
+  ]
+}
+
+/**
  * Default site metadata
  */
 export const defaultSiteMetadata = {

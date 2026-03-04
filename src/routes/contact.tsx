@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { Breadcrumb } from '../components/Breadcrumb'
-import { generateMetaTags, generateCanonicalUrl } from '../lib/seo'
+import { generateMetaTags, generateCanonicalUrl, generateOgTags } from '../lib/seo'
 
 export const Route = createFileRoute('/contact')({
   component: Contact,
@@ -12,6 +12,13 @@ export const Route = createFileRoute('/contact')({
       ...generateMetaTags({
         description:
           'Get in touch with Eyes of Forest photography. Interested in prints, collaborations, or just want to say hello? Contact me via email or Instagram.',
+      }),
+      ...generateOgTags({
+        title: 'Contact | Eyes of Forest',
+        description:
+          'Get in touch with Eyes of Forest photography. Interested in prints, collaborations, or just want to say hello? Contact me via email or Instagram.',
+        url: generateCanonicalUrl('/contact'),
+        type: 'website',
       }),
     ],
     links: [

@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import PageSection from '../components/PageSection'
 import { Breadcrumb } from '../components/Breadcrumb'
-import { generateMetaTags, generateCanonicalUrl } from '../lib/seo'
+import { generateMetaTags, generateCanonicalUrl, generateOgTags } from '../lib/seo'
 
 export const Route = createFileRoute('/about')({
   component: About,
@@ -13,6 +13,13 @@ export const Route = createFileRoute('/about')({
       ...generateMetaTags({
         description:
           'Learn about Eyes of Forest photography. Vancouver-based photographer capturing the world through film and digital photography using Hasselblad, Nikon, Pentax, and Fuji cameras.',
+      }),
+      ...generateOgTags({
+        title: 'About | Eyes of Forest',
+        description:
+          'Learn about Eyes of Forest photography. Vancouver-based photographer capturing the world through film and digital photography using Hasselblad, Nikon, Pentax, and Fuji cameras.',
+        url: generateCanonicalUrl('/about'),
+        type: 'website',
       }),
     ],
     links: [

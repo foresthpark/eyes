@@ -3,7 +3,8 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 import { ErrorBoundary } from '../components/ErrorBoundary'
 import { PageTransition } from '../components/PageTransition'
-import { defaultSiteMetadata, generateMetaTags, generateCanonicalUrl } from '../lib/seo'
+import { JsonLd } from '../components/JsonLd'
+import { defaultSiteMetadata, generateMetaTags, generateCanonicalUrl, generateOgTags, getSiteUrl } from '../lib/seo'
 
 import Header from '../components/Header'
 
@@ -45,6 +46,14 @@ export const Route = createRootRoute({
         rel: 'icon',
         href: '/favicon.ico',
       },
+      {
+        rel: 'apple-touch-icon',
+        href: '/logo192.png',
+      },
+      {
+        rel: 'manifest',
+        href: '/manifest.json',
+      },
     ],
   }),
 
@@ -71,6 +80,29 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body className="antialiased text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-900 transition-colors duration-200">
+        <JsonLd
+          data={{
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: 'Eyes of Forest',
+            url: getSiteUrl(),
+            description: defaultSiteMetadata.description,
+          }}
+        />
+        <JsonLd
+          data={{
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: 'Eyes of Forest',
+            url: getSiteUrl(),
+            logo: `${getSiteUrl()}/logo512.png`,
+            sameAs: ['https://instagram.com/eyes_of_forest'],
+            location: {
+              '@type': 'Place',
+              name: 'Vancouver, Canada',
+            },
+          }}
+        />
         {/* Skip to main content link for screen readers */}
         <a
           href="#main-content"

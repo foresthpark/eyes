@@ -7,7 +7,8 @@ import { useState, Suspense, useEffect } from 'react'
 import { getGalleryPhotos } from '../../lib/gallery'
 import { GallerySkeleton } from '../../components/LoadingSkeleton'
 import { Breadcrumb } from '../../components/Breadcrumb'
-import { generateMetaTags, generateCanonicalUrl } from '../../lib/seo'
+import { JsonLd } from '../../components/JsonLd'
+import { generateMetaTags, generateCanonicalUrl, generateOgTags } from '../../lib/seo'
 
 export const Route = createFileRoute('/gallery/$category')({
   component: CategoryGallery,
@@ -32,6 +33,12 @@ export const Route = createFileRoute('/gallery/$category')({
         ...generateMetaTags({
           description,
         }),
+        ...generateOgTags({
+          title: `${categoryName} | Gallery | Eyes of Forest`,
+          description,
+          url: generateCanonicalUrl(`/gallery/${params.category}`),
+          type: 'website',
+        }),
       ],
       links: [
         {
@@ -44,7 +51,7 @@ export const Route = createFileRoute('/gallery/$category')({
 })
 
 function CategoryGallery() {
-  const { categoryName, photos } = Route.useLoaderData()
+  const { category, categoryName, photos } = Route.useLoaderData()
   const [index, setIndex] = useState(-1)
   const [lightboxIndex, setLightboxIndex] = useState(0)
 
@@ -64,6 +71,16 @@ function CategoryGallery() {
 
   return (
     <div className="w-full">
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'ImageGallery',
+          name: `${categoryName} | Eyes of Forest`,
+          url: generateCanonicalUrl(`/gallery/${category}`),
+          description: `${categoryName} photography gallery with ${photos.length} ${photos.length === 1 ? 'photo' : 'photos'}.`,
+          numberOfItems: photos.length,
+        }}
+      />
       <style>{`
         .react-photo-album--photo img {
           object-fit: cover !important;

@@ -5,7 +5,8 @@ import { OptimizedImage } from '../components/OptimizedImage'
 import { CategoryCardSkeleton } from '../components/LoadingSkeleton'
 import { ErrorDisplay } from '../components/ErrorDisplay'
 import { Breadcrumb } from '../components/Breadcrumb'
-import { generateMetaTags, generateCanonicalUrl } from '../lib/seo'
+import { JsonLd } from '../components/JsonLd'
+import { generateMetaTags, generateCanonicalUrl, generateOgTags, getSiteUrl } from '../lib/seo'
 
 export const Route = createFileRoute('/gallery/')({
   component: GalleryIndex,
@@ -22,6 +23,13 @@ export const Route = createFileRoute('/gallery/')({
         description:
           'Browse photography galleries organized by category. Explore collections of nature, landscapes, and life moments captured through film and digital photography.',
       }),
+      ...generateOgTags({
+        title: 'Gallery | Eyes of Forest',
+        description:
+          'Browse photography galleries organized by category. Explore collections of nature, landscapes, and life moments captured through film and digital photography.',
+        url: generateCanonicalUrl('/gallery'),
+        type: 'website',
+      }),
     ],
     links: [
       {
@@ -37,6 +45,22 @@ function GalleryIndex() {
 
   return (
     <div className="w-full">
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: 'Gallery | Eyes of Forest',
+          url: generateCanonicalUrl('/gallery'),
+          description:
+            'Browse photography galleries organized by category.',
+          hasPart: categories.map((category) => ({
+            '@type': 'ImageGallery',
+            name: category.name,
+            url: `${getSiteUrl()}/gallery/${category.slug}`,
+            numberOfItems: category.photoCount,
+          })),
+        }}
+      />
       <div className="container mx-auto px-6 py-12 md:py-20">
         <Breadcrumb />
         <header className="max-w-2xl mb-16">
