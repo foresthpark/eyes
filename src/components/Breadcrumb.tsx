@@ -53,7 +53,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
 
   return (
     <nav aria-label="Breadcrumb" className="mb-8">
-      <ol className="flex items-center gap-2 text-sm" itemScope itemType="https://schema.org/BreadcrumbList">
+      <ol className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest" itemScope itemType="https://schema.org/BreadcrumbList">
         {breadcrumbItems.map((item, index) => {
           const isLast = index === breadcrumbItems.length - 1
           const key = `${item.label}-${index}`
@@ -67,14 +67,14 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
               itemType="https://schema.org/ListItem"
             >
               {index === 0 ? (
-                <Home className="w-4 h-4 text-gray-500 dark:text-gray-300" aria-hidden="true" />
+                <Home className="w-4 h-4 text-secondary" aria-hidden="true" />
               ) : (
-                <ChevronRight className="w-4 h-4 text-gray-400 dark:text-gray-300" aria-hidden="true" />
+                <ChevronRight className="w-4 h-4 text-secondary" aria-hidden="true" />
               )}
-              
+
               {isLast ? (
                 <span
-                  className="text-gray-900 dark:text-white font-medium"
+                  className="text-primary"
                   itemProp="name"
                   aria-current="page"
                 >
@@ -83,13 +83,13 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
               ) : item.href ? (
                 <Link
                   to={item.href as '/' | '/gallery' | '/about' | '/contact'}
-                  className="text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2 rounded"
+                  className="text-secondary hover:text-primary hover:line-through focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                   itemProp="item"
                 >
                   <span itemProp="name">{item.label}</span>
                 </Link>
               ) : (
-                <span className="text-gray-500 dark:text-gray-300" itemProp="name">
+                <span className="text-secondary" itemProp="name">
                   {item.label}
                 </span>
               )}

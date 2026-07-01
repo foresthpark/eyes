@@ -1,8 +1,11 @@
 import { Link } from '@tanstack/react-router'
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
-import { ThemeToggle } from './ThemeToggle'
 import { MobileMenu } from './MobileMenu'
+
+const navLinkClass =
+  'text-xs font-semibold uppercase tracking-[0.1em] text-secondary hover:line-through focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2'
+const navLinkActive = 'text-primary line-through'
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -13,15 +16,10 @@ export default function Header() {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768) // md breakpoint
     }
-    
+
     checkMobile()
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
-  }, [])
-
-  // Close mobile menu on route change
-  useEffect(() => {
-    setIsMobileMenuOpen(false)
   }, [])
 
   // Close mobile menu when resizing to desktop size
@@ -45,68 +43,61 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 transition-colors duration-200">
-        <div className="container mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <header className="sticky top-0 z-50 w-full bg-background border-b border-primary">
+        <div className="flex items-center justify-between px-margin-mobile md:px-margin h-16">
           <Link
             to="/"
-            className="text-lg sm:text-xl font-bold tracking-tighter focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2 rounded transition-transform hover:scale-105 duration-200"
+            className="font-display text-2xl md:text-3xl tracking-tight text-primary uppercase focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             aria-label="Eyes of Forest - Home"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            EYES OF FOREST
+            Eyes of Forest
           </Link>
-          
+
           {/* Desktop Navigation - hidden on mobile, visible on md and up */}
-          <nav aria-label="Main navigation" className="hidden md:flex items-center gap-4 sm:gap-6 md:gap-8">
+          <nav aria-label="Main navigation" className="hidden md:flex items-center gap-gutter">
             <Link
               to="/gallery"
-              className="text-xs sm:text-sm font-medium text-gray-600 hover:text-black dark:text-gray-200 dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2 rounded"
-              activeProps={{ className: 'text-black dark:text-white font-semibold' }}
-              aria-current="page"
+              className={navLinkClass}
+              activeProps={{ className: navLinkActive }}
             >
               Gallery
             </Link>
             <Link
               to="/about"
-              className="text-xs sm:text-sm font-medium text-gray-600 hover:text-black dark:text-gray-200 dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2 rounded"
-              activeProps={{ className: 'text-black dark:text-white font-semibold' }}
-              aria-current="page"
+              className={navLinkClass}
+              activeProps={{ className: navLinkActive }}
             >
               About
             </Link>
             <Link
               to="/contact"
-              className="text-xs sm:text-sm font-medium text-gray-600 hover:text-black dark:text-gray-200 dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2 rounded"
-              activeProps={{ className: 'text-black dark:text-white font-semibold' }}
-              aria-current="page"
+              className={navLinkClass}
+              activeProps={{ className: navLinkActive }}
             >
               Contact
             </Link>
-            <ThemeToggle />
           </nav>
 
           {/* Mobile Menu Button - visible on mobile only, hidden on md and up */}
           {isMobile && (
-            <div className="flex items-center gap-2">
-              <ThemeToggle />
-              <button
-                type="button"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2"
-                aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-                aria-expanded={isMobileMenuOpen}
-              >
-                {isMobileMenuOpen ? (
-                  <X className="w-5 h-5" aria-hidden="true" />
-                ) : (
-                  <Menu className="w-5 h-5" aria-hidden="true" />
-                )}
-              </button>
-            </div>
+            <button
+              type="button"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 hover:bg-surface-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMobileMenuOpen}
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-5 h-5" aria-hidden="true" />
+              ) : (
+                <Menu className="w-5 h-5" aria-hidden="true" />
+              )}
+            </button>
           )}
         </div>
       </header>
-      
+
       {isMobile && <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />}
     </>
   )

@@ -87,7 +87,7 @@ function CategoryGallery() {
           display: block !important;
         }
       `}</style>
-      <div className="container mx-auto px-6 py-12 md:py-20">
+      <div className="px-margin-mobile md:px-margin py-gutter md:py-16">
         <Breadcrumb
           items={[
             { label: 'Home', href: '/' },
@@ -96,16 +96,16 @@ function CategoryGallery() {
           ]}
         />
 
-        <header className="max-w-2xl mb-16">
-          <h1 className="text-4xl font-light mb-6 dark:text-white">{categoryName}</h1>
-          <p className="text-gray-500 dark:text-gray-300 text-lg" aria-live="polite">
+        <header className="flex flex-col md:flex-row justify-between items-baseline mb-gutter border-b border-primary pb-4">
+          <h1 className="font-display text-4xl md:text-6xl uppercase">{categoryName}</h1>
+          <span className="text-xs font-semibold uppercase tracking-[0.1em] text-secondary" aria-live="polite">
             {photos.length} {photos.length === 1 ? 'photo' : 'photos'}
-          </p>
+          </span>
         </header>
 
         {photos.length === 0 ? (
           <div>
-            <p className="text-gray-500 dark:text-gray-300" aria-live="polite">
+            <p className="text-secondary" aria-live="polite">
               No photos found in this gallery.
             </p>
           </div>

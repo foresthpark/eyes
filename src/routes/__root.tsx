@@ -7,6 +7,7 @@ import { JsonLd } from '../components/JsonLd'
 import { defaultSiteMetadata, generateMetaTags, generateCanonicalUrl, generateOgTags, getSiteUrl } from '../lib/seo'
 
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 import appCss from '../styles.css?url'
 
@@ -39,6 +40,19 @@ export const Route = createRootRoute({
         href: appCss,
       },
       {
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com',
+      },
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossOrigin: 'anonymous',
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;600;700&display=swap',
+      },
+      {
         rel: 'canonical',
         href: generateCanonicalUrl('/'),
       },
@@ -59,12 +73,12 @@ export const Route = createRootRoute({
 
   shellComponent: RootDocument,
   notFoundComponent: () => (
-    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-64px)] px-6 text-center" role="alert">
-      <h1 className="text-6xl font-light mb-4 dark:text-white">404</h1>
-      <p className="text-xl text-gray-500 dark:text-gray-300 mb-8">The page you are looking for does not exist.</p>
+    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-64px)] px-margin-mobile text-center" role="alert">
+      <h1 className="font-display text-[120px] leading-none mb-gutter">404</h1>
+      <p className="text-lg text-secondary mb-gutter">The page you are looking for does not exist.</p>
       <Link
         to="/"
-        className="px-8 py-3 bg-black dark:bg-white text-white dark:text-black hover:bg-gray-900 dark:hover:bg-gray-200 transition-colors uppercase tracking-widest text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2 rounded"
+        className="border border-primary px-12 py-4 text-xs font-semibold uppercase tracking-[0.1em] hover:bg-primary hover:text-on-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
         aria-label="Go to home page"
       >
         Go Home
@@ -79,7 +93,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className="antialiased text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-900 transition-colors duration-200">
+      <body className="antialiased font-body bg-background text-foreground overflow-x-hidden">
         <JsonLd
           data={{
             '@context': 'https://schema.org',
@@ -115,6 +129,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           <main id="main-content" className="min-h-[calc(100vh-64px)]">
             <PageTransition>{children}</PageTransition>
           </main>
+          <Footer />
         </ErrorBoundary>
         <TanStackDevtools
           config={{

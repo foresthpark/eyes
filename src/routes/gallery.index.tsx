@@ -61,46 +61,46 @@ function GalleryIndex() {
           })),
         }}
       />
-      <div className="container mx-auto px-6 py-12 md:py-20">
+      <div className="px-margin-mobile md:px-margin py-gutter md:py-16">
         <Breadcrumb />
-        <header className="max-w-2xl mb-16">
-          <h1 className="text-4xl font-semibold mb-6 dark:text-white">Gallery</h1>
-          <p className="text-gray-500 dark:text-gray-300 text-lg mb-12">
-            My view of the world. Through film and digital photography.
-          </p>
+        <header className="flex flex-col md:flex-row justify-between items-baseline mb-gutter border-b border-primary pb-4">
+          <h1 className="font-display text-4xl md:text-6xl uppercase">Gallery</h1>
+          <span className="text-xs font-semibold uppercase tracking-[0.1em] text-secondary">
+            My view of the world
+          </span>
         </header>
 
         {categories.length === 0 ? (
           <div>
-            <p className="text-gray-500 dark:text-gray-300" role="status" aria-live="polite">
+            <p className="text-secondary" role="status" aria-live="polite">
               No galleries found.
             </p>
           </div>
         ) : (
           <Suspense fallback={<CategoryCardSkeleton />}>
             <nav aria-label="Gallery categories">
-              <div className="grid md:grid-cols-2 gap-8 max-w-4xl">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
                 {categories.map((category) => (
                   <Link
                     key={category.slug}
                     to="/gallery/$category"
                     params={{ category: category.slug }}
-                    className="group relative overflow-hidden rounded-lg aspect-4/3 bg-gray-100 dark:bg-gray-800 hover:shadow-xl dark:hover:shadow-gray-700/50 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2 transform hover:-translate-y-1"
+                    className="group relative overflow-hidden aspect-4/3 bg-surface-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                     aria-label={`View ${category.name} gallery with ${category.photoCount} ${category.photoCount === 1 ? 'photo' : 'photos'}`}
                   >
                     <OptimizedImage
                       src={category.coverPhoto}
                       alt={`${category.name} Photography`}
-                      className="w-full h-full transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full transition-transform duration-700 group-hover:scale-105"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent dark:from-black/80 dark:via-black/30 flex items-end p-6 transition-opacity duration-300 group-hover:opacity-100">
-                      <div className="transform transition-transform duration-300 group-hover:translate-y-0 translate-y-2">
-                        <h2 className="text-white text-2xl font-light mb-2">
+                    <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-gutter">
+                      <div>
+                        <h2 className="font-display text-white text-3xl uppercase mb-1">
                           {category.name}
                         </h2>
-                        <p className="text-white/90 dark:text-white/80 text-sm">
-                          View {category.photoCount} {category.photoCount === 1 ? 'photo' : 'photos'}
+                        <p className="text-xs font-semibold uppercase tracking-[0.1em] text-white/90">
+                          {category.photoCount} {category.photoCount === 1 ? 'photo' : 'photos'}
                         </p>
                       </div>
                     </div>

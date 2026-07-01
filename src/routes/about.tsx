@@ -1,5 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router'
-import PageSection from '../components/PageSection'
 import { Breadcrumb } from '../components/Breadcrumb'
 import { generateMetaTags, generateCanonicalUrl, generateOgTags } from '../lib/seo'
 
@@ -33,26 +32,49 @@ export const Route = createFileRoute('/about')({
 
 function About() {
   return (
-    <div className="container mx-auto px-6 py-12 md:py-20">
+    <div className="px-margin-mobile md:px-margin py-gutter md:py-16">
       <Breadcrumb />
-      <div>
-        <PageSection title="About Me">
-          <p>
-            I'm a photographer based in Vancouver, Canada. This is a collection of my view of the world. The things I see and the things I feel.
-          </p>
-          <p>
-            Through my work, I hope to share my view of the world.
-          </p>
-          <div className="pt-8">
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-black dark:text-white mb-4">Equipment</h3>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600 dark:text-gray-200">
+
+      <h1 className="font-display text-5xl md:text-8xl leading-none uppercase mb-section max-w-4xl">
+        The eye behind <span className="italic normal-case">the lens.</span>
+      </h1>
+
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-start">
+        <div className="md:col-span-5 space-y-16">
+          <article>
+            <span className="text-xs font-semibold uppercase tracking-widest block mb-2 text-secondary">
+              The Artist
+            </span>
+            <div className="text-lg leading-relaxed space-y-gutter max-w-md">
+              <p>
+                I'm a photographer based in Vancouver, Canada. This is a collection of my
+                view of the world — the things I see and the things I feel.
+              </p>
+              <p>
+                Through my work, shot on both film and digital, I hope to share how I see
+                the world.
+              </p>
+            </div>
+          </article>
+
+          <article>
+            <span className="text-xs font-semibold uppercase tracking-widest block mb-4 text-secondary">
+              Equipment
+            </span>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm font-semibold uppercase tracking-widest text-primary">
               <li>Hasselblad 501CM</li>
               <li>Nikon FM3A</li>
               <li>Pentax 645NII</li>
               <li>Fuji X100VI</li>
             </ul>
-          </div>
-        </PageSection>
+          </article>
+        </div>
+
+        <div className="md:col-span-6 md:col-start-7">
+          <h2 className="font-display text-3xl md:text-4xl italic leading-tight">
+            Capturing stillness, subtracting the superfluous.
+          </h2>
+        </div>
       </div>
     </div>
   )

@@ -32,9 +32,9 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
       }
 
       return (
-        <div className="flex flex-col items-center justify-center min-h-[calc(100vh-64px)] px-6 text-center">
-          <h1 className="text-4xl font-light mb-4 dark:text-white">Something went wrong</h1>
-          <p className="text-gray-500 dark:text-gray-300 mb-8 max-w-md">
+        <div className="flex flex-col items-center justify-center min-h-[calc(100vh-64px)] px-margin-mobile text-center">
+          <h1 className="font-display text-4xl md:text-6xl uppercase mb-gutter">Something went wrong</h1>
+          <p className="text-secondary mb-gutter max-w-md">
             {this.state.error?.message || 'An unexpected error occurred. Please try again.'}
           </p>
           <div className="flex gap-4">
@@ -43,13 +43,13 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
                 this.setState({ hasError: false, error: null })
                 window.location.reload()
               }}
-              className="px-6 py-3 bg-black dark:bg-white text-white dark:text-black hover:bg-gray-900 dark:hover:bg-gray-200 transition-colors uppercase tracking-widest text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2 rounded"
+              className="px-8 py-3 bg-primary text-on-primary hover:opacity-80 uppercase tracking-widest text-xs font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
               Reload Page
             </button>
             <Link
               to="/"
-              className="px-6 py-3 bg-gray-100 dark:bg-gray-800 text-black dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors uppercase tracking-widest text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white focus-visible:ring-offset-2 rounded"
+              className="px-8 py-3 border border-primary hover:bg-primary hover:text-on-primary uppercase tracking-widest text-xs font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
               Go Home
             </Link>

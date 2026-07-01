@@ -19,13 +19,13 @@ export function ErrorDisplay({
       role="alert"
       aria-live="polite"
     >
-      <AlertCircle className="w-12 h-12 text-gray-400 dark:text-gray-300 mb-4" aria-hidden="true" />
-      <h2 className="text-xl font-semibold mb-2 dark:text-white">{title}</h2>
-      <p className="text-gray-500 dark:text-gray-300 mb-6 max-w-md">{message}</p>
+      <AlertCircle className="w-12 h-12 text-secondary mb-4" aria-hidden="true" />
+      <h2 className="font-display text-2xl mb-2">{title}</h2>
+      <p className="text-secondary mb-6 max-w-md">{message}</p>
       {onRetry && (
         <button
           onClick={onRetry}
-          className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white hover:bg-gray-900 transition-colors uppercase tracking-widest text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+          className="inline-flex items-center gap-2 border border-primary px-8 py-3 hover:bg-primary hover:text-on-primary uppercase tracking-widest text-xs font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           aria-label={retryLabel}
         >
           <RefreshCw className="w-4 h-4" aria-hidden="true" />

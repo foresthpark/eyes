@@ -32,45 +32,48 @@ export const Route = createFileRoute('/contact')({
 
 function Contact() {
   return (
-    <div className="container mx-auto px-6 py-12 md:py-20">
+    <div className="px-margin-mobile md:px-margin py-gutter md:py-16">
       <Breadcrumb />
-      <div className="max-w-2xl mx-auto text-center mb-16">
-        <h1 className="text-4xl font-light mb-6 dark:text-white">Get in Touch</h1>
-        <p className="text-gray-500 dark:text-gray-300 text-lg">
-          Whether you're interested in a print, a collaboration, or just want to say hello, I'd love to hear from you.
-        </p>
-      </div>
 
-      <div className="max-w-lg mx-auto space-y-12">
-        {/* Email */}
-        <div className="text-center">
-          <p className="text-xs uppercase tracking-[0.2em] text-gray-400 dark:text-gray-300 mb-4">Email</p>
-          <a
-            href="mailto:soop_lim@proton.me"
-            className="text-2xl font-light text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-          >
+      <header className="mb-section max-w-3xl">
+        <h1 className="font-display text-5xl md:text-7xl uppercase leading-tight">
+          Let's get <span className="italic normal-case">in touch.</span>
+        </h1>
+        <p className="text-lg text-secondary mt-gutter max-w-md">
+          Whether you're interested in a print, a collaboration, or just want to say
+          hello, I'd love to hear from you.
+        </p>
+      </header>
+
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+        <div className="md:col-span-4">
+          <h2 className="text-xs font-semibold uppercase tracking-widest text-secondary border-b border-outline pb-2 mb-6">
+            Direct
+          </h2>
+          <a href="mailto:soop_lim@proton.me" className="block text-lg hover:italic">
             soop_lim@proton.me
           </a>
         </div>
 
-        {/* Instagram */}
-        <div className="text-center">
-          <p className="text-xs uppercase tracking-[0.2em] text-gray-400 dark:text-gray-300 mb-4">Instagram</p>
+        <div className="md:col-span-4">
+          <h2 className="text-xs font-semibold uppercase tracking-widest text-secondary border-b border-outline pb-2 mb-6">
+            Connect
+          </h2>
           <a
             href="https://instagram.com/eyes_of_forest"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-2xl font-light text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+            className="block text-lg hover:line-through"
           >
             @eyes_of_forest
           </a>
         </div>
 
-        {/* Location */}
-        <div className="text-center pt-8 border-t border-gray-100 dark:border-gray-800">
-          <p className="text-xs uppercase tracking-[0.2em] text-gray-400 dark:text-gray-300">
-            Vancouver, Canada
-          </p>
+        <div className="md:col-span-4">
+          <h2 className="text-xs font-semibold uppercase tracking-widest text-secondary border-b border-outline pb-2 mb-6">
+            Based in
+          </h2>
+          <p className="text-lg">Vancouver, Canada</p>
         </div>
       </div>
     </div>
