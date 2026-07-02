@@ -3,7 +3,7 @@ import PhotoAlbum from 'react-photo-album'
 import Lightbox from "yet-another-react-lightbox"
 import "react-photo-album/masonry.css"
 import "yet-another-react-lightbox/styles.css"
-import { useState, Suspense, useEffect } from 'react'
+import { useState, Suspense } from 'react'
 import { getGalleryPhotos } from '../../lib/gallery'
 import { GallerySkeleton } from '../../components/LoadingSkeleton'
 import { Breadcrumb } from '../../components/Breadcrumb'
@@ -13,12 +13,13 @@ import { generateMetaTags, generateCanonicalUrl, generateOgTags } from '../../li
 export const Route = createFileRoute('/gallery/$category')({
   component: CategoryGallery,
   loader: async ({ params }) => {
-    try {
-      const data = await getGalleryPhotos({ data: params.category })
-      return data
-    } catch {
+    const data = await getGalleryPhotos({ data: params.category })
+    // Only 404 when the category genuinely has no photos. Transient R2 errors
+    // now bubble to the ErrorBoundary (retryable) instead of a confusing 404.
+    if (data.photos.length === 0) {
       throw notFound()
     }
+    return data
   },
   head: ({ loaderData, params }) => {
     const { categoryName, photos } = loaderData || { categoryName: '', photos: [] }
@@ -53,7 +54,6 @@ export const Route = createFileRoute('/gallery/$category')({
 function CategoryGallery() {
   const { category, categoryName, photos } = Route.useLoaderData()
   const [index, setIndex] = useState(-1)
-  const [lightboxIndex, setLightboxIndex] = useState(0)
 
   // Enhance photos with lazy loading support
   const optimizedPhotos = photos.map((photo) => ({
@@ -61,13 +61,6 @@ function CategoryGallery() {
     loading: 'lazy' as const,
     fetchPriority: 'auto' as const,
   }))
-
-  // When opening lightbox, sync the lightbox index
-  useEffect(() => {
-    if (index >= 0) {
-      setLightboxIndex(index)
-    }
-  }, [index])
 
   return (
     <div className="w-full">
@@ -138,15 +131,9 @@ function CategoryGallery() {
                 description: photo.description,
               }))}
               open={index >= 0}
-              index={lightboxIndex}
+              index={index < 0 ? 0 : index}
               close={() => setIndex(-1)}
-              on={{
-                view: ({ index: newIndex }) => {
-                  // Update lightbox index when navigating
-                  setLightboxIndex(newIndex)
-                },
-              }}
-              controller={{ 
+              controller={{
                 closeOnBackdropClick: true,
                 closeOnPullDown: true,
                 closeOnPullUp: true,
