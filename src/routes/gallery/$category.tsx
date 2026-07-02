@@ -9,6 +9,7 @@ import { GallerySkeleton } from '../../components/LoadingSkeleton'
 import { Breadcrumb } from '../../components/Breadcrumb'
 import { JsonLd } from '../../components/JsonLd'
 import { generateMetaTags, generateCanonicalUrl, generateOgTags } from '../../lib/seo'
+import { getCategoryCopy } from '../../lib/categoryCopy'
 
 export const Route = createFileRoute('/gallery/$category')({
   component: CategoryGallery,
@@ -22,9 +23,8 @@ export const Route = createFileRoute('/gallery/$category')({
     return data
   },
   head: ({ loaderData, params }) => {
-    const { categoryName, photos } = loaderData || { categoryName: '', photos: [] }
-    const photoCount = photos.length
-    const description = `Explore ${categoryName} photography gallery with ${photoCount} ${photoCount === 1 ? 'photo' : 'photos'}.`
+    const { categoryName } = loaderData || { categoryName: '' }
+    const description = getCategoryCopy(params.category, categoryName).metaDescription
 
     return {
       meta: [
@@ -54,6 +54,7 @@ export const Route = createFileRoute('/gallery/$category')({
 function CategoryGallery() {
   const { category, categoryName, photos } = Route.useLoaderData()
   const [index, setIndex] = useState(-1)
+  const copy = getCategoryCopy(category, categoryName)
 
   // Enhance photos with lazy loading and alt text (SEO + screen readers)
   const optimizedPhotos = photos.map((photo, i) => ({
@@ -71,7 +72,7 @@ function CategoryGallery() {
           '@type': 'ImageGallery',
           name: `${categoryName} | Eyes of Forest`,
           url: generateCanonicalUrl(`/gallery/${category}`),
-          description: `${categoryName} photography gallery with ${photos.length} ${photos.length === 1 ? 'photo' : 'photos'}.`,
+          description: copy.metaDescription,
           numberOfItems: photos.length,
         }}
       />
@@ -96,6 +97,8 @@ function CategoryGallery() {
             {photos.length} {photos.length === 1 ? 'photo' : 'photos'}
           </span>
         </header>
+
+        <p className="text-lg text-secondary mb-gutter max-w-2xl">{copy.intro}</p>
 
         {photos.length === 0 ? (
           <div>

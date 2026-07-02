@@ -33,6 +33,11 @@ export const Route = createRootRoute({
         name: 'theme-color',
         content: '#000000',
       },
+      {
+        // Let Google show large image previews in search results/Discover
+        name: 'robots',
+        content: 'max-image-preview:large',
+      },
     ],
     links: [
       {

@@ -1,8 +1,8 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
-@import 'tw-animate-css';
+@import "tw-animate-css";
 
-/* Obsidian & Ivory — monochrome editorial system (see DESIGN.md) */
+/* Obsidian & Ivory - monochrome editorial system (see DESIGN.md) */
 :root {
   --background: #f9f9f9;
   --foreground: #1a1c1c;
@@ -24,12 +24,12 @@ body {
 
 code {
   font-family:
-    source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 @theme inline {
-  --font-body: 'Inter', sans-serif;
-  --font-display: 'Bodoni Moda', serif;
+  --font-body: "Inter", sans-serif;
+  --font-display: "Bodoni Moda", serif;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -47,7 +47,7 @@ code {
   --spacing-margin-mobile: 24px;
   --container-max: 1440px;
 
-  /* Sharp edges — DESIGN.md shape language is 0px */
+  /* Sharp edges - DESIGN.md shape language is 0px */
   --radius: 0;
 }
 

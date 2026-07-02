@@ -46,6 +46,7 @@ export async function generateSitemap(): Promise<string> {
     for (const category of categories) {
       urls.push({
         loc: `${baseUrl}/gallery/${category.slug}`,
+        lastmod: category.lastModified,
         changefreq: 'weekly',
         priority: 0.8,
       })

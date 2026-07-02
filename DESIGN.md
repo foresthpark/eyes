@@ -115,7 +115,7 @@ Interactive states should never introduce color; instead, use opacity shifts or 
 
 ## Typography
 
-The typographic system relies on a high-contrast pairing. **Bodoni Moda** provides the editorial "voice"—elegant, vertical, and commanding. It is used exclusively for headers and large quotes. **Inter** serves as the functional anchor, providing a neutral, highly legible sans-serif for body copy and UI elements.
+The typographic system relies on a high-contrast pairing. **Bodoni Moda** provides the editorial "voice"-elegant, vertical, and commanding. It is used exclusively for headers and large quotes. **Inter** serves as the functional anchor, providing a neutral, highly legible sans-serif for body copy and UI elements.
 
 - **Display & Headlines:** Should be set with tight tracking to emphasize the high-contrast strokes of the serif.
 - **Body Copy:** Set with generous line height (1.5x - 1.8x) to maintain a feeling of airiness and luxury.
@@ -143,7 +143,7 @@ The shape language is strictly **Sharp (0px)**. All containers, buttons, and ima
 
 ## Components
 
-- **Buttons:** Rectangular with a 1px solid black border. On hover, the button fills solid black with white text. No transition easing—interaction should be instant and crisp.
+- **Buttons:** Rectangular with a 1px solid black border. On hover, the button fills solid black with white text. No transition easing-interaction should be instant and crisp.
 - **Inputs:** A single 1px black line at the bottom. The label sits in `label-sm` style 8px above the line. Error states are indicated by a 2px stroke rather than a color change.
 - **Navigation:** Minimalist text-only links. Use a strike-through or a weight change for the active state.
 - **Cards:** No borders or shadows. The image takes 100% width, with typography placed either immediately below or slightly overlapping in a high-contrast treatment.
