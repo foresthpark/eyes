@@ -69,7 +69,7 @@ const tiers: Tier[] = [
 			"30-min pre-shoot consultation",
 			"Two rolls: one 35mm, one medium format",
 			"Developing & high-res scans included",
-			"One 5\" framed print included",
+			'One 5" framed print included',
 			"Online gallery of scans",
 		],
 	},
@@ -221,13 +221,15 @@ function Rates() {
 						<p>
 							When your photos are ready, you&apos;ll receive a private link and
 							password — something like{" "}
-							<span className="font-semibold">eyes.forestp.dev/deliver/your-session</span>
+							<span className="font-semibold">
+								eyes.forestp.dev/deliver/your-session
+							</span>
 							. Only you can open it.
 						</p>
 						<p>
 							Inside: full-resolution downloads, a download-all ZIP, favorites
 							to mark your keepers, and optional print ordering. Galleries stay
-							active for 90 days.
+							active for 60 days.
 						</p>
 					</div>
 					<ul className="md:col-span-6 md:col-start-7 divide-y divide-outline text-primary">
@@ -236,7 +238,7 @@ function Rates() {
 							"Full-res downloads + download-all ZIP",
 							"Favorites to select your best shots",
 							"Optional print store (Stripe checkout)",
-							"Active for 90 days after delivery",
+							"Active for 60 days after delivery",
 						].map((item) => (
 							<li key={item} className="py-4 flex gap-3">
 								<span className="text-secondary" aria-hidden="true">

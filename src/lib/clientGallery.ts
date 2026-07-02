@@ -1,6 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { getCookie, setCookie } from "@tanstack/react-start/server";
-import Stripe from "stripe";
+import type Stripe from "stripe";
 import {
 	createGallerySessionToken,
 	getGalleryCookieMaxAge,
@@ -110,10 +110,11 @@ async function listGalleryPhotos(slug: string): Promise<ClientGalleryPhoto[]> {
 		.sort((a, b) => a.filename.localeCompare(b.filename));
 }
 
-function getStripe(): Stripe {
+async function getStripe(): Promise<Stripe> {
 	const key = process.env.STRIPE_SECRET_KEY;
 	if (!key) throw new Error("Missing STRIPE_SECRET_KEY");
-	return new Stripe(key);
+	const { default: StripeCtor } = await import("stripe");
+	return new StripeCtor(key);
 }
 
 export const getClientGalleryPublic = createServerFn({ method: "GET" })
@@ -346,7 +347,7 @@ export const createClientCheckoutSession = createServerFn({ method: "POST" })
 			return { url: null as string | null, error: "No valid items" };
 		}
 
-		const stripe = getStripe();
+		const stripe = await getStripe();
 		const siteUrl = getSiteUrl();
 		const session = await stripe.checkout.sessions.create({
 			mode: "payment",

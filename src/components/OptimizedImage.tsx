@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 interface OptimizedImageProps {
   src: string
@@ -28,6 +28,7 @@ export function OptimizedImage({
   const [hasError, setHasError] = useState(false)
   const [retryCount, setRetryCount] = useState(0)
   const [currentSrc, setCurrentSrc] = useState(src)
+  const imgRef = useRef<HTMLImageElement>(null)
 
   const handleLoad = () => {
     setIsLoading(false)
@@ -60,6 +61,24 @@ export function OptimizedImage({
       setHasError(false)
     }
   }, [src, currentSrc])
+
+  // If the image is already complete (e.g. served from cache before hydration,
+  // so React's onLoad never fires), reveal it. Without this the img stays stuck
+  // at opacity-0 — fetched in the network tab but never painted.
+  useEffect(() => {
+    const img = imgRef.current
+    // Guard on currentSrc so this re-checks whenever the source changes
+    if (!img || img.getAttribute('src') !== currentSrc || !img.complete) return
+    if (img.naturalWidth > 0) {
+      setIsLoading(false)
+      setHasError(false)
+      onLoad?.()
+    } else {
+      setIsLoading(false)
+      setHasError(true)
+      onError?.()
+    }
+  }, [currentSrc, onLoad, onError])
 
   if (hasError) {
     return (
@@ -98,6 +117,7 @@ export function OptimizedImage({
       
       {/* Actual image */}
       <img
+        ref={imgRef}
         src={currentSrc}
         alt={alt}
         width={width}
