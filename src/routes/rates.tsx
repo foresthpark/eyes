@@ -212,6 +212,43 @@ function Rates() {
 				))}
 			</div>
 
+			<section className="mb-section border-t border-outline pt-section">
+				<h2 className="text-xs font-semibold uppercase tracking-widest text-secondary border-b border-outline pb-2 mb-6">
+					How your gallery works
+				</h2>
+				<div className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-start">
+					<div className="md:col-span-5 space-y-gutter text-lg leading-relaxed max-w-md">
+						<p>
+							When your photos are ready, you&apos;ll receive a private link and
+							password — something like{" "}
+							<span className="font-semibold">eyes.forestp.dev/deliver/your-session</span>
+							. Only you can open it.
+						</p>
+						<p>
+							Inside: full-resolution downloads, a download-all ZIP, favorites
+							to mark your keepers, and optional print ordering. Galleries stay
+							active for 90 days.
+						</p>
+					</div>
+					<ul className="md:col-span-6 md:col-start-7 divide-y divide-outline text-primary">
+						{[
+							"Password-protected private gallery",
+							"Full-res downloads + download-all ZIP",
+							"Favorites to select your best shots",
+							"Optional print store (Stripe checkout)",
+							"Active for 90 days after delivery",
+						].map((item) => (
+							<li key={item} className="py-4 flex gap-3">
+								<span className="text-secondary" aria-hidden="true">
+									—
+								</span>
+								{item}
+							</li>
+						))}
+					</ul>
+				</div>
+			</section>
+
 			<div className="grid grid-cols-1 md:grid-cols-12 gap-gutter">
 				<div className="md:col-span-5">
 					<h2 className="text-xs font-semibold uppercase tracking-widest text-secondary border-b border-outline pb-2 mb-6">

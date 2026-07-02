@@ -17,6 +17,8 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as GalleryIndexRouteImport } from './routes/gallery.index'
 import { Route as GalleryCategoryRouteImport } from './routes/gallery/$category'
+import { Route as DeliverSlugRouteImport } from './routes/deliver/$slug'
+import { Route as ApiStripeWebhookRouteImport } from './routes/api/stripe/webhook'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -58,6 +60,16 @@ const GalleryCategoryRoute = GalleryCategoryRouteImport.update({
   path: '/gallery/$category',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DeliverSlugRoute = DeliverSlugRouteImport.update({
+  id: '/deliver/$slug',
+  path: '/deliver/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiStripeWebhookRoute = ApiStripeWebhookRouteImport.update({
+  id: '/api/stripe/webhook',
+  path: '/api/stripe/webhook',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -66,8 +78,10 @@ export interface FileRoutesByFullPath {
   '/og-image': typeof OgImageRoute
   '/rates': typeof RatesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/deliver/$slug': typeof DeliverSlugRoute
   '/gallery/$category': typeof GalleryCategoryRoute
   '/gallery': typeof GalleryIndexRoute
+  '/api/stripe/webhook': typeof ApiStripeWebhookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -76,8 +90,10 @@ export interface FileRoutesByTo {
   '/og-image': typeof OgImageRoute
   '/rates': typeof RatesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/deliver/$slug': typeof DeliverSlugRoute
   '/gallery/$category': typeof GalleryCategoryRoute
   '/gallery': typeof GalleryIndexRoute
+  '/api/stripe/webhook': typeof ApiStripeWebhookRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -87,8 +103,10 @@ export interface FileRoutesById {
   '/og-image': typeof OgImageRoute
   '/rates': typeof RatesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/deliver/$slug': typeof DeliverSlugRoute
   '/gallery/$category': typeof GalleryCategoryRoute
   '/gallery/': typeof GalleryIndexRoute
+  '/api/stripe/webhook': typeof ApiStripeWebhookRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -99,8 +117,10 @@ export interface FileRouteTypes {
     | '/og-image'
     | '/rates'
     | '/sitemap.xml'
+    | '/deliver/$slug'
     | '/gallery/$category'
     | '/gallery'
+    | '/api/stripe/webhook'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -109,8 +129,10 @@ export interface FileRouteTypes {
     | '/og-image'
     | '/rates'
     | '/sitemap.xml'
+    | '/deliver/$slug'
     | '/gallery/$category'
     | '/gallery'
+    | '/api/stripe/webhook'
   id:
     | '__root__'
     | '/'
@@ -119,8 +141,10 @@ export interface FileRouteTypes {
     | '/og-image'
     | '/rates'
     | '/sitemap.xml'
+    | '/deliver/$slug'
     | '/gallery/$category'
     | '/gallery/'
+    | '/api/stripe/webhook'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -130,8 +154,10 @@ export interface RootRouteChildren {
   OgImageRoute: typeof OgImageRoute
   RatesRoute: typeof RatesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  DeliverSlugRoute: typeof DeliverSlugRoute
   GalleryCategoryRoute: typeof GalleryCategoryRoute
   GalleryIndexRoute: typeof GalleryIndexRoute
+  ApiStripeWebhookRoute: typeof ApiStripeWebhookRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -192,6 +218,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GalleryCategoryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/deliver/$slug': {
+      id: '/deliver/$slug'
+      path: '/deliver/$slug'
+      fullPath: '/deliver/$slug'
+      preLoaderRoute: typeof DeliverSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/stripe/webhook': {
+      id: '/api/stripe/webhook'
+      path: '/api/stripe/webhook'
+      fullPath: '/api/stripe/webhook'
+      preLoaderRoute: typeof ApiStripeWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -202,8 +242,10 @@ const rootRouteChildren: RootRouteChildren = {
   OgImageRoute: OgImageRoute,
   RatesRoute: RatesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  DeliverSlugRoute: DeliverSlugRoute,
   GalleryCategoryRoute: GalleryCategoryRoute,
   GalleryIndexRoute: GalleryIndexRoute,
+  ApiStripeWebhookRoute: ApiStripeWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

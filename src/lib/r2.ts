@@ -2,8 +2,7 @@ import { S3Client, ListObjectsV2Command, PutObjectCommand, GetObjectCommand, Hea
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
 import fs from 'node:fs'
 
-// R2 Configuration from environment variables
-const ACCOUNT_ID = process.env.CLOUDFLARE_S3_ENDPOINT?.match(/https:\/\/([^.]+)\.r2/)?.[1]
+// Cloudflare R2 Configuration from environment variables
 const ACCESS_KEY_ID = process.env.CLOUDFLARE_ACCESS_KEY_ID!
 const SECRET_ACCESS_KEY = process.env.CLOUDFLARE_SECRET_ACCESS_KEY!
 const BUCKET_NAME = process.env.CLOUDFLARE_BUCKET_NAME!
@@ -65,20 +64,66 @@ export async function getObjectMetadata(key: string): Promise<Record<string, str
   return response.Metadata || {}
 }
 
+export interface PresignedUrlOptions {
+  expiresIn?: number
+  responseContentDisposition?: string
+}
+
 /**
  * Generate a presigned URL for an R2 object
  */
 export async function getPresignedUrl(
   key: string,
-  expiresIn: number = 86400 // 24 hours by default
+  options: PresignedUrlOptions | number = 86400,
 ): Promise<string> {
+  const resolved =
+    typeof options === 'number'
+      ? { expiresIn: options }
+      : { expiresIn: 86400, ...options }
+
   const command = new GetObjectCommand({
     Bucket: BUCKET_NAME,
     Key: key,
+    ...(resolved.responseContentDisposition
+      ? { ResponseContentDisposition: resolved.responseContentDisposition }
+      : {}),
   })
 
-  const url = await getSignedUrl(r2Client, command, { expiresIn })
+  const url = await getSignedUrl(r2Client, command, {
+    expiresIn: resolved.expiresIn ?? 86400,
+  })
   return url
+}
+
+/**
+ * Read and parse a JSON object from R2
+ */
+export async function getJson<T>(key: string): Promise<T | null> {
+  try {
+    const command = new GetObjectCommand({
+      Bucket: BUCKET_NAME,
+      Key: key,
+    })
+    const response = await r2Client.send(command)
+    const body = await response.Body?.transformToString()
+    if (!body) return null
+    return JSON.parse(body) as T
+  } catch {
+    return null
+  }
+}
+
+/**
+ * Write a JSON object to R2
+ */
+export async function putJson(key: string, data: unknown): Promise<void> {
+  const command = new PutObjectCommand({
+    Bucket: BUCKET_NAME,
+    Key: key,
+    Body: JSON.stringify(data, null, 2),
+    ContentType: 'application/json',
+  })
+  await r2Client.send(command)
 }
 
 /**
@@ -107,13 +152,17 @@ export async function uploadFile(
 export async function uploadBuffer(
   key: string,
   buffer: Buffer,
-  metadata?: Record<string, string>
+  options?: {
+    metadata?: Record<string, string>
+    contentType?: string
+  },
 ): Promise<void> {
   const command = new PutObjectCommand({
     Bucket: BUCKET_NAME,
     Key: key,
     Body: buffer,
-    Metadata: metadata,
+    Metadata: options?.metadata,
+    ContentType: options?.contentType,
   })
 
   await r2Client.send(command)

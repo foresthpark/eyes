@@ -46,6 +46,9 @@ export async function generateSitemap(): Promise<string> {
     priority: 0.6,
   })
 
+  // Private client galleries are intentionally excluded from the sitemap.
+  // They live at /deliver/<slug> and are password-protected + noindex.
+
   // Dynamic category routes
   try {
     const categories = await getGalleryCategories()
