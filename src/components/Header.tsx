@@ -9,25 +9,20 @@ const navLinkActive = 'text-primary line-through'
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
-
-  // Check if we're on mobile on mount and resize
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768) // md breakpoint
-    }
-
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
-  }, [])
 
   // Close mobile menu when resizing to desktop size
   useEffect(() => {
-    if (!isMobile) {
-      setIsMobileMenuOpen(false)
+    const mediaQuery = window.matchMedia('(min-width: 768px)')
+    const closeOnDesktop = () => {
+      if (mediaQuery.matches) {
+        setIsMobileMenuOpen(false)
+      }
     }
-  }, [isMobile])
+
+    closeOnDesktop()
+    mediaQuery.addEventListener('change', closeOnDesktop)
+    return () => mediaQuery.removeEventListener('change', closeOnDesktop)
+  }, [])
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -87,25 +82,23 @@ export default function Header() {
           </nav>
 
           {/* Mobile Menu Button - visible on mobile only, hidden on md and up */}
-          {isMobile && (
-            <button
-              type="button"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 hover:bg-surface-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={isMobileMenuOpen}
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-5 h-5" aria-hidden="true" />
-              ) : (
-                <Menu className="w-5 h-5" aria-hidden="true" />
-              )}
-            </button>
-          )}
+          <button
+            type="button"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 hover:bg-surface-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMobileMenuOpen}
+          >
+            {isMobileMenuOpen ? (
+              <X className="w-5 h-5" aria-hidden="true" />
+            ) : (
+              <Menu className="w-5 h-5" aria-hidden="true" />
+            )}
+          </button>
         </div>
       </header>
 
-      {isMobile && <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />}
+      <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
     </>
   )
 }
