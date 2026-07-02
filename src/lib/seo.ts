@@ -69,7 +69,7 @@ export function generateOgTags(options: {
     description,
     url,
     type = 'website',
-    image = `${getSiteUrl()}/og_image.png`,
+    image = `${getSiteUrl()}/og-image`,
   } = options
 
   return [
