@@ -4,6 +4,35 @@ import { listObjects, getPresignedUrl, getObjectMetadata } from './r2'
 // Only real image files — skips folder-marker objects and anything non-image
 const isImageKey = (key: string) => /\.(jpe?g|png|webp|avif|gif|tiff?)$/i.test(key)
 
+// ponytail: in-memory TTL cache; move to KV/redis if this ever runs multi-instance.
+// TTL must stay well under the 24h presigned-URL expiry.
+const CACHE_TTL_MS = 60 * 60 * 1000 // 1 hour
+const ttlCache = new Map<string, { value: unknown; expires: number }>()
+async function cached<T>(key: string, fn: () => Promise<T>): Promise<T> {
+  const hit = ttlCache.get(key)
+  if (hit && hit.expires > Date.now()) return hit.value as T
+  const value = await fn()
+  ttlCache.set(key, { value, expires: Date.now() + CACHE_TTL_MS })
+  return value
+}
+
+// One R2 round-trip per prefix per hour instead of per page view
+const listImages = (prefix: string) =>
+  cached(`list:${prefix}`, async () =>
+    (await listObjects(prefix)).filter((obj) => isImageKey(obj.key)),
+  )
+
+// Metadata + presigned URL per object, cached so browsers see stable URLs
+// (stable URLs = browser cache hits instead of re-downloading every visit)
+const getPhotoData = (key: string) =>
+  cached(`photo:${key}`, async () => {
+    const [metadata, signedUrl] = await Promise.all([
+      getObjectMetadata(key),
+      getPresignedUrl(key),
+    ])
+    return { metadata, signedUrl }
+  })
+
 // Fisher-Yates shuffle (unbiased, unlike sort(() => Math.random() - 0.5))
 function shuffle<T>(arr: T[]): T[] {
   for (let i = arr.length - 1; i > 0; i--) {
@@ -34,13 +63,12 @@ export const getGalleryCategories = createServerFn({ method: 'GET' }).handler(as
   const categories: GalleryCategory[] = []
 
   // List all objects in the gallery prefix
-  const objects = await listObjects('gallery/')
+  const objects = await listImages('gallery/')
 
   // Group objects by category (first folder after gallery/)
   const categoryMap = new Map<string, typeof objects>()
 
   for (const obj of objects) {
-    if (!isImageKey(obj.key)) continue
     const match = obj.key.match(/^gallery\/([^/]+)\/(.+)$/)
     if (match) {
       const [, categorySlug] = match
@@ -57,7 +85,7 @@ export const getGalleryCategories = createServerFn({ method: 'GET' }).handler(as
       const newest = photos.reduce((a, b) =>
         b.lastModified > a.lastModified ? b : a,
       )
-      const coverPhoto = await getPresignedUrl(newest.key)
+      const coverPhoto = (await getPhotoData(newest.key)).signedUrl
 
       categories.push({
         name: slug.charAt(0).toUpperCase() + slug.slice(1),
@@ -79,16 +107,13 @@ export const getGalleryPhotos = createServerFn({ method: 'GET' })
     const prefix = `gallery/${category}/`
 
     // List all image objects in this category
-    const objects = (await listObjects(prefix)).filter((obj) => isImageKey(obj.key))
+    const objects = await listImages(prefix)
 
     // Resolve metadata + presigned URLs in parallel (sequential was seconds-slow)
     const results = await Promise.all(
       objects.map(async (obj): Promise<GalleryPhoto | null> => {
         try {
-          const [metadata, signedUrl] = await Promise.all([
-            getObjectMetadata(obj.key),
-            getPresignedUrl(obj.key),
-          ])
+          const { metadata, signedUrl } = await getPhotoData(obj.key)
 
           return {
             src: signedUrl,
@@ -119,7 +144,7 @@ export const getGalleryPhotos = createServerFn({ method: 'GET' })
 export const getRandomHeroPhoto = createServerFn({ method: 'GET' }).handler(async () => {
   // List all photos from all categories — images only, so we never pick a
   // folder-marker or non-image key (the cause of the hero failing to load)
-  const objects = (await listObjects('gallery/')).filter((obj) => isImageKey(obj.key))
+  const objects = await listImages('gallery/')
 
   if (objects.length === 0) {
     return null
@@ -130,10 +155,7 @@ export const getRandomHeroPhoto = createServerFn({ method: 'GET' }).handler(asyn
   const randomPhoto = objects[randomIndex]
 
   // Get metadata and presigned URL
-  const [metadata, signedUrl] = await Promise.all([
-    getObjectMetadata(randomPhoto.key),
-    getPresignedUrl(randomPhoto.key),
-  ])
+  const { metadata, signedUrl } = await getPhotoData(randomPhoto.key)
 
   return {
     src: signedUrl,

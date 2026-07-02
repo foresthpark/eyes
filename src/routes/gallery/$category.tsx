@@ -55,9 +55,10 @@ function CategoryGallery() {
   const { category, categoryName, photos } = Route.useLoaderData()
   const [index, setIndex] = useState(-1)
 
-  // Enhance photos with lazy loading support
-  const optimizedPhotos = photos.map((photo) => ({
+  // Enhance photos with lazy loading and alt text (SEO + screen readers)
+  const optimizedPhotos = photos.map((photo, i) => ({
     ...photo,
+    alt: photo.title ?? `${categoryName} photograph ${i + 1}`,
     loading: 'lazy' as const,
     fetchPriority: 'auto' as const,
   }))
@@ -123,10 +124,11 @@ function CategoryGallery() {
             </Suspense>
 
             <Lightbox
-              slides={photos.map((photo) => ({
+              slides={photos.map((photo, i) => ({
                 src: photo.src,
                 width: photo.width,
                 height: photo.height,
+                alt: photo.title ?? `${categoryName} photograph ${i + 1}`,
                 title: photo.title,
                 description: photo.description,
               }))}

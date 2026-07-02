@@ -6,12 +6,9 @@
  * Get the base site URL from environment variables or default
  */
 export function getSiteUrl(): string {
-  if (typeof window !== 'undefined') {
-    // Client-side: use current origin
-    return window.location.origin
-  }
-  // Server-side: use environment variable or default
-  return import.meta.env.VITE_SITE_URL || 'https://eyesofforest.com'
+  // Always the configured production URL — window.origin would leak preview
+  // domains into canonicals and OG tags
+  return import.meta.env.VITE_SITE_URL || 'https://eyes.forest.dev'
 }
 
 /**

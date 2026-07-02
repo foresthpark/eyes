@@ -4,7 +4,7 @@ import { TanStackDevtools } from '@tanstack/react-devtools'
 import { ErrorBoundary } from '../components/ErrorBoundary'
 import { PageTransition } from '../components/PageTransition'
 import { JsonLd } from '../components/JsonLd'
-import { defaultSiteMetadata, generateMetaTags, generateCanonicalUrl, generateOgTags, getSiteUrl } from '../lib/seo'
+import { defaultSiteMetadata, generateMetaTags, getSiteUrl } from '../lib/seo'
 
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -51,10 +51,6 @@ export const Route = createRootRoute({
       {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;600;700&display=swap',
-      },
-      {
-        rel: 'canonical',
-        href: generateCanonicalUrl('/'),
       },
       {
         rel: 'icon',
@@ -131,17 +127,19 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           </main>
           <Footer />
         </ErrorBoundary>
-        <TanStackDevtools
-          config={{
-            position: 'bottom-right',
-          }}
-          plugins={[
-            {
-              name: 'Tanstack Router',
-              render: <TanStackRouterDevtoolsPanel />,
-            },
-          ]}
-        />
+        {import.meta.env.DEV && (
+          <TanStackDevtools
+            config={{
+              position: 'bottom-right',
+            }}
+            plugins={[
+              {
+                name: 'Tanstack Router',
+                render: <TanStackRouterDevtoolsPanel />,
+              },
+            ]}
+          />
+        )}
         <Scripts />
       </body>
     </html>

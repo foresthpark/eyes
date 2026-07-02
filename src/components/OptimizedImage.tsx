@@ -103,6 +103,7 @@ export function OptimizedImage({
         width={width}
         height={height}
         loading={loading}
+        fetchPriority={loading === 'eager' ? 'high' : undefined}
         onLoad={handleLoad}
         onError={handleError}
         className={`w-full h-full object-cover transition-opacity duration-300 ${

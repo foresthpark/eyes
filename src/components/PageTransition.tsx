@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useLocation } from '@tanstack/react-router'
 
 interface PageTransitionProps {
@@ -8,8 +8,14 @@ interface PageTransitionProps {
 export function PageTransition({ children }: PageTransitionProps) {
   const location = useLocation()
   const [isTransitioning, setIsTransitioning] = useState(false)
+  const isFirstRender = useRef(true)
 
   useEffect(() => {
+    // Don't hide the page for 300ms right after hydration — only on navigations
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+      return
+    }
     setIsTransitioning(true)
     const timer = setTimeout(() => setIsTransitioning(false), 300)
     return () => clearTimeout(timer)

@@ -10,7 +10,7 @@ export const Route = createFileRoute('/')({
     const heroPhoto = await getRandomHeroPhoto()
     return { heroPhoto }
   },
-  head: () => ({
+  head: ({ loaderData }) => ({
     meta: [
       {
         title: 'Eyes of Forest | Photography Portfolio',
@@ -32,6 +32,10 @@ export const Route = createFileRoute('/')({
         rel: 'canonical',
         href: generateCanonicalUrl('/'),
       },
+      // Kick off the LCP hero download before hydration
+      ...(loaderData?.heroPhoto
+        ? [{ rel: 'preload', as: 'image', href: loaderData.heroPhoto.src, fetchPriority: 'high' as const }]
+        : []),
     ],
   }),
 })
