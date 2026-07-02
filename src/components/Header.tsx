@@ -64,6 +64,13 @@ export default function Header() {
               Gallery
             </Link>
             <Link
+              to="/rates"
+              className={navLinkClass}
+              activeProps={{ className: navLinkActive }}
+            >
+              Rates
+            </Link>
+            <Link
               to="/about"
               className={navLinkClass}
               activeProps={{ className: navLinkActive }}

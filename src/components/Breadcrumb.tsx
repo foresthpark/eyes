@@ -37,6 +37,8 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
           .join(' ')
         crumbs.push({ label: categoryName })
       }
+    } else if (pathname === '/rates') {
+      crumbs.push({ label: 'Rates' })
     } else if (pathname === '/about') {
       crumbs.push({ label: 'About' })
     } else if (pathname === '/contact') {
@@ -82,7 +84,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
                 </span>
               ) : item.href ? (
                 <Link
-                  to={item.href as '/' | '/gallery' | '/about' | '/contact'}
+                  to={item.href as '/' | '/gallery' | '/rates' | '/about' | '/contact'}
                   className="text-secondary hover:text-primary hover:line-through focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                   itemProp="item"
                 >

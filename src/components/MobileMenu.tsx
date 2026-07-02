@@ -47,6 +47,9 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <Link to="/gallery" onClick={onClose} className={linkClass} activeProps={{ className: linkActive }}>
               Gallery
             </Link>
+            <Link to="/rates" onClick={onClose} className={linkClass} activeProps={{ className: linkActive }}>
+              Rates
+            </Link>
             <Link to="/about" onClick={onClose} className={linkClass} activeProps={{ className: linkActive }}>
               About
             </Link>

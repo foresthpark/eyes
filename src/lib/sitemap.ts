@@ -29,6 +29,12 @@ export async function generateSitemap(): Promise<string> {
   })
 
   urls.push({
+    loc: `${baseUrl}/rates`,
+    changefreq: 'monthly',
+    priority: 0.8,
+  })
+
+  urls.push({
     loc: `${baseUrl}/about`,
     changefreq: 'monthly',
     priority: 0.7,
