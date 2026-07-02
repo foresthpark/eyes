@@ -1,136 +1,142 @@
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from "react";
 
 interface OptimizedImageProps {
-  src: string
-  alt: string
-  width?: number
-  height?: number
-  className?: string
-  loading?: 'lazy' | 'eager'
-  onLoad?: () => void
-  onError?: () => void
+	src: string;
+	alt: string;
+	width?: number;
+	height?: number;
+	className?: string;
+	loading?: "lazy" | "eager";
+	onLoad?: () => void;
+	onError?: () => void;
 }
 
 // Generate a simple blur placeholder (tiny 1x1 pixel data URL)
-const blurDataURL = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=='
+const blurDataURL =
+	"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q==";
 
 export function OptimizedImage({
-  src,
-  alt,
-  width,
-  height,
-  className = '',
-  loading = 'lazy',
-  onLoad,
-  onError,
+	src,
+	alt,
+	width,
+	height,
+	className = "",
+	loading = "lazy",
+	onLoad,
+	onError,
 }: OptimizedImageProps) {
-  const [isLoading, setIsLoading] = useState(true)
-  const [hasError, setHasError] = useState(false)
-  const [retryCount, setRetryCount] = useState(0)
-  const [currentSrc, setCurrentSrc] = useState(src)
-  const imgRef = useRef<HTMLImageElement>(null)
+	const [isLoading, setIsLoading] = useState(true);
+	const [hasError, setHasError] = useState(false);
+	const [retryCount, setRetryCount] = useState(0);
+	const [currentSrc, setCurrentSrc] = useState(src);
+	const imgRef = useRef<HTMLImageElement>(null);
 
-  const handleLoad = () => {
-    setIsLoading(false)
-    setHasError(false)
-    onLoad?.()
-  }
+	const handleLoad = () => {
+		setIsLoading(false);
+		setHasError(false);
+		onLoad?.();
+	};
 
-  const handleError = () => {
-    setIsLoading(false)
-    setHasError(true)
-    onError?.()
-  }
+	const handleError = () => {
+		setIsLoading(false);
+		setHasError(true);
+		onError?.();
+	};
 
-  const handleRetry = () => {
-    if (retryCount < 3) {
-      setRetryCount((prev) => prev + 1)
-      setHasError(false)
-      setIsLoading(true)
-      // Force reload by adding a cache-busting parameter
-      setCurrentSrc(`${src}${src.includes('?') ? '&' : '?'}retry=${retryCount + 1}&t=${Date.now()}`)
-    }
-  }
+	const handleRetry = () => {
+		if (retryCount < 3) {
+			setRetryCount((prev) => prev + 1);
+			setHasError(false);
+			setIsLoading(true);
+			// Force reload by adding a cache-busting parameter
+			setCurrentSrc(
+				`${src}${src.includes("?") ? "&" : "?"}retry=${retryCount + 1}&t=${Date.now()}`,
+			);
+		}
+	};
 
-  // Reset currentSrc when src prop changes
-  useEffect(() => {
-    if (src !== currentSrc && !currentSrc.includes('retry=')) {
-      setCurrentSrc(src)
-      setRetryCount(0)
-      setIsLoading(true)
-      setHasError(false)
-    }
-  }, [src, currentSrc])
+	// Reset currentSrc when src prop changes
+	useEffect(() => {
+		if (src !== currentSrc && !currentSrc.includes("retry=")) {
+			setCurrentSrc(src);
+			setRetryCount(0);
+			setIsLoading(true);
+			setHasError(false);
+		}
+	}, [src, currentSrc]);
 
-  // If the image is already complete (e.g. served from cache before hydration,
-  // so React's onLoad never fires), reveal it. Without this the img stays stuck
-  // at opacity-0 — fetched in the network tab but never painted.
-  useEffect(() => {
-    const img = imgRef.current
-    // Guard on currentSrc so this re-checks whenever the source changes
-    if (!img || img.getAttribute('src') !== currentSrc || !img.complete) return
-    if (img.naturalWidth > 0) {
-      setIsLoading(false)
-      setHasError(false)
-      onLoad?.()
-    } else {
-      setIsLoading(false)
-      setHasError(true)
-      onError?.()
-    }
-  }, [currentSrc, onLoad, onError])
+	// If the image is already complete (e.g. served from cache before hydration,
+	// so React's onLoad never fires), reveal it. Without this the img stays stuck
+	// at opacity-0 - fetched in the network tab but never painted.
+	useEffect(() => {
+		const img = imgRef.current;
+		// Guard on currentSrc so this re-checks whenever the source changes
+		if (!img || img.getAttribute("src") !== currentSrc || !img.complete) return;
+		if (img.naturalWidth > 0) {
+			setIsLoading(false);
+			setHasError(false);
+			onLoad?.();
+		} else {
+			setIsLoading(false);
+			setHasError(true);
+			onError?.();
+		}
+	}, [currentSrc, onLoad, onError]);
 
-  if (hasError) {
-    return (
-      <div
-        className={`bg-surface-container flex flex-col items-center justify-center gap-2 ${className}`}
-        style={{ width, height }}
-        role="img"
-        aria-label={`${alt} - Failed to load`}
-      >
-        <span className="text-secondary text-sm">Failed to load image</span>
-        {retryCount < 3 && (
-          <button
-            type="button"
-            onClick={handleRetry}
-            className="text-xs text-secondary hover:text-primary underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-            aria-label={`Retry loading ${alt}`}
-          >
-            Retry
-          </button>
-        )}
-      </div>
-    )
-  }
+	if (hasError) {
+		return (
+			<div
+				className={`bg-surface-container flex flex-col items-center justify-center gap-2 ${className}`}
+				style={{ width, height }}
+				role="img"
+				aria-label={`${alt} - Failed to load`}
+			>
+				<span className="text-secondary text-sm">Failed to load image</span>
+				{retryCount < 3 && (
+					<button
+						type="button"
+						onClick={handleRetry}
+						className="text-xs text-secondary hover:text-primary underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+						aria-label={`Retry loading ${alt}`}
+					>
+						Retry
+					</button>
+				)}
+			</div>
+		);
+	}
 
-  return (
-    <div className={`relative overflow-hidden ${className}`} style={{ width, height }}>
-      {/* Blur placeholder */}
-      {isLoading && (
-        <img
-          src={blurDataURL}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover filter blur-sm scale-110"
-          aria-hidden="true"
-        />
-      )}
-      
-      {/* Actual image */}
-      <img
-        ref={imgRef}
-        src={currentSrc}
-        alt={alt}
-        width={width}
-        height={height}
-        loading={loading}
-        fetchPriority={loading === 'eager' ? 'high' : undefined}
-        onLoad={handleLoad}
-        onError={handleError}
-        className={`w-full h-full object-cover transition-opacity duration-300 ${
-          isLoading ? 'opacity-0' : 'opacity-100'
-        }`}
-        decoding="async"
-      />
-    </div>
-  )
+	return (
+		<div
+			className={`relative overflow-hidden ${className}`}
+			style={{ width, height }}
+		>
+			{/* Blur placeholder */}
+			{isLoading && (
+				<img
+					src={blurDataURL}
+					alt=""
+					className="absolute inset-0 w-full h-full object-cover filter blur-sm scale-110"
+					aria-hidden="true"
+				/>
+			)}
+
+			{/* Actual image */}
+			<img
+				ref={imgRef}
+				src={currentSrc}
+				alt={alt}
+				width={width}
+				height={height}
+				loading={loading}
+				fetchPriority={loading === "eager" ? "high" : undefined}
+				onLoad={handleLoad}
+				onError={handleError}
+				className={`w-full h-full object-cover transition-opacity duration-300 ${
+					isLoading ? "opacity-0" : "opacity-100"
+				}`}
+				decoding="async"
+			/>
+		</div>
+	);
 }

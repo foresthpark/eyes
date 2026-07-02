@@ -10,7 +10,6 @@ import {
 	Loader2,
 	ShoppingBag,
 } from "lucide-react";
-import type { ClientGalleryView } from "../lib/clientGalleryTypes";
 import {
 	createClientCheckoutSession,
 	getClientFavorites,
@@ -18,6 +17,7 @@ import {
 	getClientPhotoDownloadUrl,
 	toggleClientFavorite,
 } from "../lib/clientGallery";
+import type { ClientGalleryView } from "../lib/clientGalleryTypes";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
@@ -189,7 +189,7 @@ export function ClientGalleryExperience({
 
 				{checkoutStatus === "success" && (
 					<div className="mb-gutter border border-primary bg-surface-container px-6 py-4 text-sm">
-						Thank you — your print order was received. I&apos;ll be in touch
+						Thank you - your print order was received. I&apos;ll be in touch
 						shortly.
 					</div>
 				)}
@@ -344,7 +344,9 @@ export function ClientGalleryExperience({
 						{cartTotalCents > 0 && (
 							<div className="mt-gutter max-w-md space-y-4">
 								<div>
-									<Label htmlFor="checkout-email">Email for order updates</Label>
+									<Label htmlFor="checkout-email">
+										Email for order updates
+									</Label>
 									<Input
 										id="checkout-email"
 										type="email"
@@ -369,7 +371,7 @@ export function ClientGalleryExperience({
 											Redirecting...
 										</>
 									) : (
-										`Checkout — $${(cartTotalCents / 100).toFixed(2)} CAD`
+										`Checkout - $${(cartTotalCents / 100).toFixed(2)} CAD`
 									)}
 								</Button>
 								{checkoutError && (

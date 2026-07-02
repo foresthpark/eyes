@@ -220,7 +220,7 @@ function Rates() {
 					<div className="md:col-span-5 space-y-gutter text-lg leading-relaxed max-w-md">
 						<p>
 							When your photos are ready, you&apos;ll receive a private link and
-							password — something like{" "}
+							password - something like{" "}
 							<span className="font-semibold">
 								eyes.forestp.dev/deliver/your-session
 							</span>
@@ -242,7 +242,7 @@ function Rates() {
 						].map((item) => (
 							<li key={item} className="py-4 flex gap-3">
 								<span className="text-secondary" aria-hidden="true">
-									—
+									-
 								</span>
 								{item}
 							</li>

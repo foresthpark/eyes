@@ -65,7 +65,10 @@ async function requireSession(slug: string) {
 	return session;
 }
 
-function toPublic(slug: string, manifest: ClientGalleryManifest): ClientGalleryPublic {
+function toPublic(
+	slug: string,
+	manifest: ClientGalleryManifest,
+): ClientGalleryPublic {
 	return {
 		slug,
 		title: manifest.title,
@@ -236,8 +239,9 @@ export const toggleClientFavorite = createServerFn({ method: "POST" })
 		}
 
 		const key = galleryFavoritesKey(data.slug, data.visitorToken);
-		const existing =
-			(await getJson<ClientGalleryFavorites>(key)) ?? { photoKeys: [] };
+		const existing = (await getJson<ClientGalleryFavorites>(key)) ?? {
+			photoKeys: [],
+		};
 		const set = new Set(existing.photoKeys);
 
 		if (set.has(data.photoKey)) {
@@ -390,7 +394,7 @@ export async function notifyPhotographerOfOrder(order: ClientGalleryOrder) {
 		body: JSON.stringify({
 			from: "Eyes of Forest <orders@eyes.forestp.dev>",
 			to: [email],
-			subject: `New print order — ${order.slug}`,
+			subject: `New print order - ${order.slug}`,
 			text: [
 				`Gallery: ${order.slug}`,
 				`Customer: ${order.email}`,
@@ -434,5 +438,7 @@ export function resolvePrintProductsFromMetadata(
 				priceCents: product.priceCents,
 			};
 		})
-		.filter((item): item is ClientGalleryOrder["items"][number] => item !== null);
+		.filter(
+			(item): item is ClientGalleryOrder["items"][number] => item !== null,
+		);
 }

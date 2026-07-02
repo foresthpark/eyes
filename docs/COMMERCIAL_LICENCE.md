@@ -1,6 +1,6 @@
 # Commercial Use Licence
 
-**Eyes of Forest Photography — Commercial Licence Agreement**
+**Eyes of Forest Photography - Commercial Licence Agreement**
 
 This Commercial Use Licence ("Licence") applies to photographs from a session with Eyes of Forest ("the Photographer") where the Client has purchased or negotiated commercial usage rights. It supplements or replaces the Personal Print Licence for the specific Images and uses agreed in writing. By using the delivered images ("the Images") for any commercial purpose, the Client ("the Client") agrees to the terms below.
 
@@ -45,7 +45,7 @@ Even under this Licence, the Client **may not**:
 
 ## 4. Copyright and Ownership
 
-The Photographer **retains full copyright** and ownership of all Images at all times, in accordance with the *Copyright Act* (R.S.C., 1985, c. C-42) of Canada. This Licence grants commercial usage rights only and does **not** transfer copyright or ownership. All rights not expressly granted are reserved by the Photographer.
+The Photographer **retains full copyright** and ownership of all Images at all times, in accordance with the _Copyright Act_ (R.S.C., 1985, c. C-42) of Canada. This Licence grants commercial usage rights only and does **not** transfer copyright or ownership. All rights not expressly granted are reserved by the Photographer.
 
 ## 5. Model and Property Releases
 
@@ -55,7 +55,7 @@ The Client is responsible for ensuring that appropriate **model and property rel
 
 The Photographer retains the right to use the Images for **portfolio, promotional, and marketing purposes**, including the Photographer's website, social media, printed portfolio, and submissions to competitions or publications, unless a written exclusivity or confidentiality agreement states otherwise.
 
-The Photographer may also capture and use **behind-the-scenes media** — including photographs and video of the session, its setup, and the shooting process — for the Photographer's own marketing, portfolio, social media, and educational content. This may incidentally include the Client's likeness and products. The Client consents to this use unless they opt out in writing before the session.
+The Photographer may also capture and use **behind-the-scenes media** - including photographs and video of the session, its setup, and the shooting process - for the Photographer's own marketing, portfolio, social media, and educational content. This may incidentally include the Client's likeness and products. The Client consents to this use unless they opt out in writing before the session.
 
 ## 7. Credit
 
@@ -75,6 +75,6 @@ This Licence is governed by the laws of the Province of **British Columbia** and
 
 ---
 
-*By using the delivered Images for any commercial purpose, the Client acknowledges that they have read, understood, and agreed to the terms of this Commercial Use Licence and the accompanying Usage Schedule.*
+_By using the delivered Images for any commercial purpose, the Client acknowledges that they have read, understood, and agreed to the terms of this Commercial Use Licence and the accompanying Usage Schedule._
 
 **Eyes of Forest** · Vancouver, BC

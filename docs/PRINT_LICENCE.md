@@ -1,6 +1,6 @@
 # Personal Print Licence
 
-**Eyes of Forest Photography — Portrait Session Licence Agreement**
+**Eyes of Forest Photography - Portrait Session Licence Agreement**
 
 This Personal Print Licence ("Licence") accompanies the photographs delivered from your portrait session with Eyes of Forest ("the Photographer"). By downloading, printing, or otherwise using the delivered images ("the Images"), you ("the Client") agree to the terms below.
 
@@ -43,7 +43,7 @@ The Photographer **retains full copyright** and ownership of all Images at all t
 
 The Photographer retains the right to use the Images for **portfolio, promotional, and marketing purposes**, including the Photographer's website, social media, printed portfolio, and submissions to competitions or publications.
 
-The Photographer may also capture and use **behind-the-scenes media** — including photographs and video of the session, its setup, and the shooting process — for the Photographer's own marketing, portfolio, social media, and educational content. This may incidentally include the Client's likeness. The Client consents to this use unless they opt out in writing before the session.
+The Photographer may also capture and use **behind-the-scenes media** - including photographs and video of the session, its setup, and the shooting process - for the Photographer's own marketing, portfolio, social media, and educational content. This may incidentally include the Client's likeness. The Client consents to this use unless they opt out in writing before the session.
 
 If the Client wishes to keep their session **private**, they must request this in writing before delivery; a privacy request may be accommodated at the Photographer's discretion.
 
