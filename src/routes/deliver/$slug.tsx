@@ -22,7 +22,7 @@ export const Route = createFileRoute("/deliver/$slug")({
 	},
 	head: () => ({
 		meta: [
-			{ title: "Private Gallery | Eyes of Forest" },
+			{ title: "Private Gallery | Double Tree" },
 			...generateMetaTags({
 				description: "Private client photo gallery.",
 			}),

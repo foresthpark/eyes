@@ -22,7 +22,7 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'Eyes of Forest::林 | How I See the World',
+        title: 'Double Tree | How I See the World',
       },
       ...generateMetaTags({
         description: defaultSiteMetadata.description,
@@ -100,7 +100,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           data={{
             '@context': 'https://schema.org',
             '@type': 'WebSite',
-            name: 'Eyes of Forest',
+            name: 'Double Tree',
             url: getSiteUrl(),
             description: defaultSiteMetadata.description,
           }}
@@ -109,10 +109,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           data={{
             '@context': 'https://schema.org',
             '@type': 'Organization',
-            name: 'Eyes of Forest',
+            name: 'Double Tree',
             url: getSiteUrl(),
             logo: `${getSiteUrl()}/logo512.png`,
-            sameAs: ['https://instagram.com/eyes_of_forest'],
+            sameAs: ['https://instagram.com/double_tree'],
             location: {
               '@type': 'Place',
               name: 'Vancouver, Canada',

@@ -1,8 +1,8 @@
 # Personal Print Licence
 
-**Eyes of Forest Photography - Portrait Session Licence Agreement**
+**Double Tree Photography - Portrait Session Licence Agreement**
 
-This Personal Print Licence ("Licence") accompanies the photographs delivered from your portrait session with Eyes of Forest ("the Photographer"). By downloading, printing, or otherwise using the delivered images ("the Images"), you ("the Client") agree to the terms below.
+This Personal Print Licence ("Licence") accompanies the photographs delivered from your portrait session with Double Tree ("the Photographer"). By downloading, printing, or otherwise using the delivered images ("the Images"), you ("the Client") agree to the terms below.
 
 ---
 
@@ -21,7 +21,7 @@ Under this Licence, the Client **may**:
 - Post the Images to **personal** social media and messaging accounts, provided they are not altered beyond basic cropping and are not used to promote a business.
 - Store personal backup copies of the delivered files.
 
-Credit to "Eyes of Forest" is appreciated on public posts but is not required for personal use.
+Credit to "Double Tree" is appreciated on public posts but is not required for personal use.
 
 ## 3. Prohibited Uses
 
@@ -67,4 +67,4 @@ This Licence is governed by the laws of the Province of **British Columbia** and
 
 _By downloading or printing the delivered Images, the Client acknowledges that they have read, understood, and agreed to the terms of this Personal Print Licence._
 
-**Eyes of Forest** · Vancouver, BC
+**Double Tree** · Vancouver, BC

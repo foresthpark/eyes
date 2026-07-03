@@ -7,16 +7,16 @@ export const Route = createFileRoute('/contact')({
   head: () => ({
     meta: [
       {
-        title: 'Contact | Eyes of Forest',
+        title: 'Contact | Double Tree',
       },
       ...generateMetaTags({
         description:
-          'Get in touch with Eyes of Forest photography. Interested in prints, collaborations, or just want to say hello? Contact me via email or Instagram.',
+          'Get in touch with Double Tree photography. Interested in prints, collaborations, or just want to say hello? Contact me via email or Instagram.',
       }),
       ...generateOgTags({
-        title: 'Contact | Eyes of Forest',
+        title: 'Contact | Double Tree',
         description:
-          'Get in touch with Eyes of Forest photography. Interested in prints, collaborations, or just want to say hello? Contact me via email or Instagram.',
+          'Get in touch with Double Tree photography. Interested in prints, collaborations, or just want to say hello? Contact me via email or Instagram.',
         url: generateCanonicalUrl('/contact'),
         type: 'website',
       }),
@@ -60,12 +60,12 @@ function Contact() {
             Connect
           </h2>
           <a
-            href="https://instagram.com/eyes_of_forest"
+            href="https://instagram.com/double_tree"
             target="_blank"
             rel="noopener noreferrer"
             className="block text-lg hover:line-through"
           >
-            @eyes_of_forest
+            @double_tree
           </a>
         </div>
 

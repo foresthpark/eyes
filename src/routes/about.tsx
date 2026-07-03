@@ -12,16 +12,16 @@ export const Route = createFileRoute("/about")({
 	head: () => ({
 		meta: [
 			{
-				title: "About | Eyes of Forest",
+				title: "About | Double Tree",
 			},
 			...generateMetaTags({
 				description:
-					"Learn about Eyes of Forest photography. Vancouver-based photographer capturing the world through film and digital photography using Hasselblad, Nikon, Pentax, and Fuji cameras.",
+					"Learn about Double Tree photography. Vancouver-based photographer capturing the world through film and digital photography using Hasselblad, Nikon, Pentax, and Fuji cameras.",
 			}),
 			...generateOgTags({
-				title: "About | Eyes of Forest",
+				title: "About | Double Tree",
 				description:
-					"Learn about Eyes of Forest photography. Vancouver-based photographer capturing the world through film and digital photography using Hasselblad, Nikon, Pentax, and Fuji cameras.",
+					"Learn about Double Tree photography. Vancouver-based photographer capturing the world through film and digital photography using Hasselblad, Nikon, Pentax, and Fuji cameras.",
 				url: generateCanonicalUrl("/about"),
 				type: "website",
 			}),
@@ -45,14 +45,14 @@ function About() {
 					url: generateCanonicalUrl("/about"),
 					mainEntity: {
 						"@type": "Person",
-						name: "Eyes of Forest",
+						name: "Double Tree",
 						jobTitle: "Photographer",
 						address: {
 							"@type": "PostalAddress",
 							addressLocality: "Vancouver",
 							addressCountry: "CA",
 						},
-						sameAs: ["https://instagram.com/eyes_of_forest"],
+						sameAs: ["https://instagram.com/double_tree"],
 					},
 				}}
 			/>

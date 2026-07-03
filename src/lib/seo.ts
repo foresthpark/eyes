@@ -77,7 +77,7 @@ export function generateOgTags(options: {
 		{ property: "og:description", content: description },
 		{ property: "og:url", content: url },
 		{ property: "og:type", content: type },
-		{ property: "og:site_name", content: "Eyes of Forest" },
+		{ property: "og:site_name", content: "Double Tree" },
 		{ property: "og:locale", content: "en_CA" },
 		{ property: "og:image", content: image },
 		{ property: "og:image:alt", content: title },
@@ -92,11 +92,11 @@ export function generateOgTags(options: {
  * Default site metadata
  */
 export const defaultSiteMetadata = {
-	name: import.meta.env.VITE_SITE_NAME || "Eyes of Forest",
+	name: import.meta.env.VITE_SITE_NAME || "Double Tree",
 	description:
 		import.meta.env.VITE_SITE_DESCRIPTION ||
 		"Photography portfolio showcasing my view of the world through film and digital photography.",
-	author: "Eyes of Forest",
+	author: "Double Tree",
 	keywords:
 		"photography, film photography, digital photography, portfolio, nature photography, landscape photography",
 };

@@ -13,16 +13,16 @@ export const Route = createFileRoute("/rates")({
 	head: () => ({
 		meta: [
 			{
-				title: "Rates | Eyes of Forest",
+				title: "Rates | Double Tree",
 			},
 			...generateMetaTags({
 				description:
-					"Portrait session rates with Eyes of Forest, a Vancouver-based photographer. Editorial, lifestyle, and personal-branding portraits shot on film and digital.",
+					"Portrait session rates with Double Tree, a Vancouver-based photographer. Editorial, lifestyle, and personal-branding portraits shot on film and digital.",
 			}),
 			...generateOgTags({
-				title: "Rates | Eyes of Forest",
+				title: "Rates | Double Tree",
 				description:
-					"Portrait session rates with Eyes of Forest, a Vancouver-based photographer. Editorial, lifestyle, and personal-branding portraits shot on film and digital.",
+					"Portrait session rates with Double Tree, a Vancouver-based photographer. Editorial, lifestyle, and personal-branding portraits shot on film and digital.",
 				url: generateCanonicalUrl("/rates"),
 				type: "website",
 			}),
@@ -125,7 +125,7 @@ function Rates() {
 					serviceType: "Portrait photography",
 					provider: {
 						"@type": "Person",
-						name: "Eyes of Forest",
+						name: "Double Tree",
 						address: {
 							"@type": "PostalAddress",
 							addressLocality: "Vancouver",

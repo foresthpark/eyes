@@ -1,8 +1,8 @@
 # Commercial Use Licence
 
-**Eyes of Forest Photography - Commercial Licence Agreement**
+**Double Tree Photography - Commercial Licence Agreement**
 
-This Commercial Use Licence ("Licence") applies to photographs from a session with Eyes of Forest ("the Photographer") where the Client has purchased or negotiated commercial usage rights. It supplements or replaces the Personal Print Licence for the specific Images and uses agreed in writing. By using the delivered images ("the Images") for any commercial purpose, the Client ("the Client") agrees to the terms below.
+This Commercial Use Licence ("Licence") applies to photographs from a session with Double Tree ("the Photographer") where the Client has purchased or negotiated commercial usage rights. It supplements or replaces the Personal Print Licence for the specific Images and uses agreed in writing. By using the delivered images ("the Images") for any commercial purpose, the Client ("the Client") agrees to the terms below.
 
 Commercial use is **not** granted automatically. It is available as an option with the Editorial session and by separate agreement for other sessions. The specific **scope, term, and territory** of each commercial engagement are set out in the accompanying quote or booking confirmation ("the Usage Schedule"), which forms part of this Licence.
 
@@ -59,7 +59,7 @@ The Photographer may also capture and use **behind-the-scenes media** - includin
 
 ## 7. Credit
 
-Photographer credit ("Photography by Eyes of Forest") is appreciated where practical but is not required for commercial use unless stated in the Usage Schedule.
+Photographer credit ("Photography by Double Tree") is appreciated where practical but is not required for commercial use unless stated in the Usage Schedule.
 
 ## 8. Fees and Payment
 
@@ -77,4 +77,4 @@ This Licence is governed by the laws of the Province of **British Columbia** and
 
 _By using the delivered Images for any commercial purpose, the Client acknowledges that they have read, understood, and agreed to the terms of this Commercial Use Licence and the accompanying Usage Schedule._
 
-**Eyes of Forest** · Vancouver, BC
+**Double Tree** · Vancouver, BC

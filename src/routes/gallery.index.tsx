@@ -17,14 +17,14 @@ export const Route = createFileRoute('/gallery/')({
   head: () => ({
     meta: [
       {
-        title: 'Gallery | Eyes of Forest',
+        title: 'Gallery | Double Tree',
       },
       ...generateMetaTags({
         description:
           'Browse photography galleries organized by category. Explore collections of nature, landscapes, and life moments captured through film and digital photography.',
       }),
       ...generateOgTags({
-        title: 'Gallery | Eyes of Forest',
+        title: 'Gallery | Double Tree',
         description:
           'Browse photography galleries organized by category. Explore collections of nature, landscapes, and life moments captured through film and digital photography.',
         url: generateCanonicalUrl('/gallery'),
@@ -49,7 +49,7 @@ function GalleryIndex() {
         data={{
           '@context': 'https://schema.org',
           '@type': 'CollectionPage',
-          name: 'Gallery | Eyes of Forest',
+          name: 'Gallery | Double Tree',
           url: generateCanonicalUrl('/gallery'),
           description:
             'Browse photography galleries organized by category.',

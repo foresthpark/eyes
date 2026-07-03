@@ -43,10 +43,10 @@ export default function Header() {
           <Link
             to="/"
             className="font-display text-2xl md:text-3xl tracking-tight text-primary uppercase focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-            aria-label="Eyes of Forest - Home"
+            aria-label="Double Tree - Home"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Eyes of Forest
+            Double Tree
           </Link>
 
           {/* Desktop Navigation - hidden on mobile, visible on md and up */}

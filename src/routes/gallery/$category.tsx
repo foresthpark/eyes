@@ -29,13 +29,13 @@ export const Route = createFileRoute('/gallery/$category')({
     return {
       meta: [
         {
-          title: `${categoryName} | Gallery | Eyes of Forest`,
+          title: `${categoryName} | Gallery | Double Tree`,
         },
         ...generateMetaTags({
           description,
         }),
         ...generateOgTags({
-          title: `${categoryName} | Gallery | Eyes of Forest`,
+          title: `${categoryName} | Gallery | Double Tree`,
           description,
           url: generateCanonicalUrl(`/gallery/${params.category}`),
           type: 'website',
@@ -70,7 +70,7 @@ function CategoryGallery() {
         data={{
           '@context': 'https://schema.org',
           '@type': 'ImageGallery',
-          name: `${categoryName} | Eyes of Forest`,
+          name: `${categoryName} | Double Tree`,
           url: generateCanonicalUrl(`/gallery/${category}`),
           description: copy.metaDescription,
           numberOfItems: photos.length,

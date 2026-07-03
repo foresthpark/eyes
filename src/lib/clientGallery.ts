@@ -392,7 +392,7 @@ export async function notifyPhotographerOfOrder(order: ClientGalleryOrder) {
 			"Content-Type": "application/json",
 		},
 		body: JSON.stringify({
-			from: "Eyes of Forest <orders@eyes.forestp.dev>",
+			from: "Double Tree <orders@eyes.forestp.dev>",
 			to: [email],
 			subject: `New print order - ${order.slug}`,
 			text: [

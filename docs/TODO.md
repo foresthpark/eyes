@@ -1,6 +1,6 @@
 # Improvement TODO List
 
-This document tracks all recommended improvements for the Eyes of Forest photography portfolio website, organized by category and priority.
+This document tracks all recommended improvements for the Double Tree photography portfolio website, organized by category and priority.
 
 ## High Priority
 

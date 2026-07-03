@@ -13,14 +13,14 @@ export const Route = createFileRoute('/')({
   head: ({ loaderData }) => ({
     meta: [
       {
-        title: 'Eyes of Forest | Photography Portfolio',
+        title: 'Double Tree | Photography Portfolio',
       },
       ...generateMetaTags({
         description:
           'Photography portfolio showcasing my view of the world through film and digital photography. Explore galleries of nature, landscapes, and life moments.',
       }),
       ...generateOgTags({
-        title: 'Eyes of Forest | Photography Portfolio',
+        title: 'Double Tree | Photography Portfolio',
         description:
           'Photography portfolio showcasing my view of the world through film and digital photography. Explore galleries of nature, landscapes, and life moments.',
         url: generateCanonicalUrl('/'),
