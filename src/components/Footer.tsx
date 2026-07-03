@@ -7,9 +7,11 @@ export default function Footer() {
 
       <div className="flex flex-col md:flex-row gap-gutter md:gap-12">
         <div className="flex flex-col gap-2">
-          <span className="text-xs font-semibold uppercase tracking-[0.1em] text-secondary">Follow</span>
+          <span className="text-xs font-semibold uppercase tracking-[0.1em] text-secondary">
+            Follow
+          </span>
           <a
-            href="https://instagram.com/double_tree"
+            href="https://instagram.com/eyes_of_forest"
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs font-semibold uppercase tracking-[0.1em] text-secondary hover:text-primary"
@@ -18,8 +20,13 @@ export default function Footer() {
           </a>
         </div>
         <div className="flex flex-col gap-2">
-          <span className="text-xs font-semibold uppercase tracking-[0.1em] text-secondary">Inquiries</span>
-          <a href="mailto:soop_lim@proton.me" className="text-base text-primary hover:underline">
+          <span className="text-xs font-semibold uppercase tracking-[0.1em] text-secondary">
+            Inquiries
+          </span>
+          <a
+            href="mailto:soop_lim@proton.me"
+            className="text-base text-primary hover:underline"
+          >
             soop_lim@proton.me
           </a>
         </div>
@@ -29,5 +36,5 @@ export default function Footer() {
         © {new Date().getFullYear()} Double Tree
       </div>
     </footer>
-  )
+  );
 }
