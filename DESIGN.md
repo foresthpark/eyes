@@ -139,13 +139,13 @@ This design system rejects traditional shadows. Depth is achieved through **Tona
 
 ## Shapes
 
-The shape language is strictly **Sharp (0px)**. All containers, buttons, and image frames must have 90-degree corners to reflect the precision of a printed photograph and the structural lines of a gallery space. Circular elements are permitted only for specific functional icons (e.g., a play button) but should be avoided for structural UI elements.
+The shape language is a restrained **editorial radius scale**: chips/tags 4px, buttons and cards 8px, panels/modals 12px (tokens live in `client-portal/src/styles.css`). Corners are softened just enough to feel considered, never pill-shaped or playful — the precision of a printed photograph still governs proportions. Circular elements are permitted only for specific functional icons (e.g., a play button) but should be avoided for structural UI elements.
 
 ## Components
 
-- **Buttons:** Rectangular with a 1px solid black border. On hover, the button fills solid black with white text. No transition easing-interaction should be instant and crisp.
+- **Buttons:** Rectangular (8px radius) with a 1px solid black border. On hover, the button fills solid black with white text. No transition easing-interaction should be instant and crisp.
 - **Inputs:** A single 1px black line at the bottom. The label sits in `label-sm` style 8px above the line. Error states are indicated by a 2px stroke rather than a color change.
 - **Navigation:** Minimalist text-only links. Use a strike-through or a weight change for the active state.
 - **Cards:** No borders or shadows. The image takes 100% width, with typography placed either immediately below or slightly overlapping in a high-contrast treatment.
-- **Chips/Tags:** Simple text surrounded by a thin rectangular border, using the `label-sm` typographic style.
+- **Chips/Tags:** Simple text surrounded by a thin border (4px radius), using the `label-sm` typographic style.
 - **Image Gallery:** Implement variable aspect ratios (mix of portrait and landscape) within the grid to reinforce the editorial aesthetic.
