@@ -54,7 +54,7 @@ const tiers: Tier[] = [
     features: [
       "30-min pre-shoot consultation",
       "One outfit / look",
-      "5–10 retouched images",
+      "5 retouched images",
       "Online gallery delivery",
       "Personal print licence",
     ],
@@ -76,13 +76,13 @@ const tiers: Tier[] = [
   {
     name: "Studio",
     tagline: "Controlled light, clean backdrops.",
-    price: "$285",
+    price: "$625",
     duration: "2 hrs · studio included",
     features: [
       "30-min pre-shoot consultation",
       "2 hours of studio rental included",
       "Up to two outfits / looks",
-      "10–20 retouched images",
+      "10 retouched images",
       "Backdrop & lighting setup",
       "Online gallery delivery",
       "Personal print licence",
@@ -91,13 +91,14 @@ const tiers: Tier[] = [
   {
     name: "Editorial",
     tagline: "A full, considered story.",
-    price: "$585",
+    price: "$1250",
     duration: "3-3.5 hrs · multiple looks",
     features: [
       "60-min pre-shoot consultation",
+      "3 hours of studio rental included",
       "Multiple outfits / looks",
       "Hair & makeup coordination",
-      "30–40 retouched images",
+      "15 retouched images",
       "Online gallery delivery",
       "Commercial licence available",
     ],
