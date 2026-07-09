@@ -139,7 +139,7 @@ This design system rejects traditional shadows. Depth is achieved through **Tona
 
 ## Shapes
 
-The shape language is a restrained **editorial radius scale**: chips/tags 4px, buttons and cards 8px, panels/modals 12px (tokens live in `client-portal/src/styles.css`). Corners are softened just enough to feel considered, never pill-shaped or playful — the precision of a printed photograph still governs proportions. Circular elements are permitted only for specific functional icons (e.g., a play button) but should be avoided for structural UI elements.
+The shape language is a restrained **editorial radius scale**: chips/tags 4px, buttons and cards 8px, panels/modals 12px (tokens live in `client-portal/src/styles.css`). Corners are softened just enough to feel considered, never pill-shaped or playful - the precision of a printed photograph still governs proportions. Circular elements are permitted only for specific functional icons (e.g., a play button) but should be avoided for structural UI elements.
 
 ## Components
 

@@ -1,10 +1,10 @@
-# Client Portal — Feature Roadmap
+# Client Portal - Feature Roadmap
 
 Ranked by value-per-effort. Scope notes call out which surface each item applies to.
 
 ## Current state
 
-### Legacy gallery (`eyes` — `/deliver/$slug`)
+### Legacy gallery (`eyes` - `/deliver/$slug`)
 
 Password-gated gallery with signed-cookie sessions, favorites (per-visitor token in R2), single + zip downloads, Stripe print store, order email notification, gallery expiry.
 
@@ -22,36 +22,36 @@ Magic-link auth, inquiry → booking → mood board → delivery lifecycle, proo
 
 ---
 
-## Phase 1 — High value, cheap
+## Phase 1 - High value, cheap
 
 Do these first.
 
 ### 1. Favorites visible to the photographer `[legacy]`
 
-Clients already mark favorites, but they're keyed by anonymous visitor token in R2 — the photographer can't see them. A **"Share my selects with the photographer"** button (or email-the-list action reusing the existing order-notification email path) turns favorites into proofing: album selection, retouch picks, blog permission.
+Clients already mark favorites, but they're keyed by anonymous visitor token in R2 - the photographer can't see them. A **"Share my selects with the photographer"** button (or email-the-list action reusing the existing order-notification email path) turns favorites into proofing: album selection, retouch picks, blog permission.
 
 **Scope:** one server fn + one button + one email.
 
-> **Start here for legacy.** This is the single biggest gap — the data exists, nobody sees it.
+> **Start here for legacy.** This is the single biggest gap - the data exists, nobody sees it.
 
 ### 2. Expiry warning + extension request `[both]`
 
 Galleries silently die at `expiresAt`. Add:
 
-- In-gallery banner: _"Expires in 5 days — download everything now"_
+- In-gallery banner: _"Expires in 5 days - download everything now"_
 - Extension path: mailto link (cheap) or one-field form that emails the photographer (better UX)
 
 Saves the inevitable _"my gallery is gone"_ support email.
 
 ### 3. Direct-share links to a single photo `[both]`
 
-`?photo=key` on gallery URLs — scroll to photo and open lightbox. Clients share with family; family becomes bookings.
+`?photo=key` on gallery URLs - scroll to photo and open lightbox. Clients share with family; family becomes bookings.
 
 **Scope:** query param + scroll/lightbox open. Basically free.
 
 ### 4. Download favorites / selections only `[both]`
 
-ZIP (or batch download) of favorited or selected photos only — not the full gallery. Natural follow-on once favorites are surfaced (#1). High value on mobile where storage and patience are limited.
+ZIP (or batch download) of favorited or selected photos only - not the full gallery. Natural follow-on once favorites are surfaced (#1). High value on mobile where storage and patience are limited.
 
 **Scope:** same zip pipeline as "download all," filtered by favorite/selection keys.
 
@@ -63,7 +63,7 @@ Automated email at 7 days and 1 day before `expiresAt`. Reuses existing email in
 
 ### 6. Open Graph preview on public share links `[client-portal]`
 
-When someone pastes `/g/{token}` or `?photo=key` into iMessage or social, show cover image + title (_"Sarah & James — Family Session"_). Makes shared links feel intentional, not suspicious.
+When someone pastes `/g/{token}` or `?photo=key` into iMessage or social, show cover image + title (_"Sarah & James - Family Session"_). Makes shared links feel intentional, not suspicious.
 
 **Scope:** OG meta tags from first gallery photo + shoot title.
 
@@ -77,7 +77,7 @@ After scheduling confirms, offer `.ics` download. Reduces no-shows. Data already
 
 ---
 
-## Phase 2 — Medium (worth it if clients ask)
+## Phase 2 - Medium (worth it if clients ask)
 
 ### 9. Photo comments / retouch notes `[legacy]`
 
@@ -85,7 +85,7 @@ Same storage pattern as favorites (JSON per visitor in R2). Only add if the work
 
 ### 10. Web-size vs full-res download choice `[both]`
 
-Clients want phone-friendly versions for Instagram. If the R2 pipeline already generates display variants, offering them for download is small. Consider **4:5 / 1:1 "Instagram crop"** as a named export — more specific than generic web size.
+Clients want phone-friendly versions for Instagram. If the R2 pipeline already generates display variants, offering them for download is small. Consider **4:5 / 1:1 "Instagram crop"** as a named export - more specific than generic web size.
 
 ### 11. Digital-download purchase tier `[both]`
 
@@ -113,7 +113,7 @@ Export mood board images + comments as PDF or email to photographer. Turns pre-s
 
 ### 17. Gift print purchase link `[both]`
 
-Family member buys a print without gallery password — single shared photo or curated subset. Common wedding ask.
+Family member buys a print without gallery password - single shared photo or curated subset. Common wedding ask.
 
 ### 18. Referral credit `[both]`
 
@@ -140,5 +140,5 @@ Post-delivery: _"Give a friend $50 off, get $50 off your next session."_ Simple 
 
 | Surface                       | Start with                                                                                                                                                                                                                    |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Legacy** (`/deliver/$slug`) | **#1 — surface favorites to the photographer.** Converts a dead-end feature into the proofing loop that's the whole reason client portals exist.                                                                              |
-| **Client portal**             | **#2 + #5 — expiry banner and proactive emails.** Proofing and favorites are done; the biggest remaining client pain is silent gallery death. Then **#4** (download selections only) and **#6** (OG previews on share links). |
+| **Legacy** (`/deliver/$slug`) | **#1 - surface favorites to the photographer.** Converts a dead-end feature into the proofing loop that's the whole reason client portals exist.                                                                              |
+| **Client portal**             | **#2 + #5 - expiry banner and proactive emails.** Proofing and favorites are done; the biggest remaining client pain is silent gallery death. Then **#4** (download selections only) and **#6** (OG previews on share links). |
