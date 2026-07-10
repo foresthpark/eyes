@@ -134,12 +134,12 @@ The layout follows a **Fluid Grid** model with significant intentional breaks. W
 Depth is achieved primarily through **Tonal Layers**. Two surface treatments are allowed:
 
 - **Editorial surfaces** (marketing, galleries, quote accept): flat fills and hairline rules (`border-y` / `divide-y`). No filled card shells; no shadows. High-tier overlays (modals, lightboxes, nav) use a 95% opaque white layer or a stark 1px solid black border.
-- **Admin interactive surfaces** (pipeline cards, order rows, calendar panels): soft cards — `rounded-xl`, `1px` hairline (`border-black/10`), `bg-card`, and a subtle `shadow-sm`. This is the shared `card` recipe in `client-portal/src/lib/ui.ts`. Hover may shift to a tonal fill (`bg-surface-container`); never introduce color.
+- **Admin interactive surfaces** (pipeline cards, order rows, calendar panels): soft cards - `rounded-xl`, `1px` hairline (`border-black/10`), `bg-card`, and a subtle `shadow-sm`. This is the shared `card` recipe in `client-portal/src/lib/ui.ts`. Hover may shift to a tonal fill (`bg-surface-container`); never introduce color.
 - **Transitions:** Prefer opacity, weight, or a subtle 4px vertical slide over lighting effects. Button fill swaps stay instant and crisp.
 
 ## Shapes
 
-The shape language is a restrained **editorial radius scale**: chips/tags 4px (`rounded-sm`), buttons 8px (`rounded-md`), admin cards and panels 12px (`rounded-xl`) — tokens live in `client-portal/src/styles.css` and recipes in `client-portal/src/lib/ui.ts`. Corners are softened just enough to feel considered, never pill-shaped or playful - the precision of a printed photograph still governs proportions. Circular elements are permitted only for specific functional icons (e.g., a play button) but should be avoided for structural UI elements.
+The shape language is a restrained **editorial radius scale**: chips/tags 4px (`rounded-sm`), buttons 8px (`rounded-md`), admin cards and panels 12px (`rounded-xl`) - tokens live in `client-portal/src/styles.css` and recipes in `client-portal/src/lib/ui.ts`. Corners are softened just enough to feel considered, never pill-shaped or playful - the precision of a printed photograph still governs proportions. Circular elements are permitted only for specific functional icons (e.g., a play button) but should be avoided for structural UI elements.
 
 ## Components
 
@@ -147,7 +147,7 @@ The shape language is a restrained **editorial radius scale**: chips/tags 4px (`
 - **Inputs:** A single 1px black bottom line, no fill. The label sits in `label-sm` style above the line. Error states are indicated by a 2px stroke rather than a color change.
 - **Navigation:** Minimalist text-only links. Use a strike-through or a weight change for the active state.
 - **Cards (editorial / gallery):** No borders or shadows. The image takes 100% width, with typography placed either immediately below or slightly overlapping in a high-contrast treatment.
-- **Cards (admin):** Soft interactive tiles using the `card` recipe — light hairline border, subtle shadow, 12px radius, `p-4` padding, stacked with `gap-4`. Primary identity (client name) uses Bodoni at `text-xl`; secondary markers (shoot type, column headers) use `label-sm`; dates and body meta stay plain Inter `text-xs` (not uppercase). Page headers: Bodoni `text-5xl` plus a short Inter subtitle.
+- **Cards (admin):** Soft interactive tiles using the `card` recipe - light hairline border, subtle shadow, 12px radius, `p-4` padding, stacked with `gap-4`. Primary identity (client name) uses Bodoni at `text-xl`; secondary markers (shoot type, column headers) use `label-sm`; dates and body meta stay plain Inter `text-xs` (not uppercase). Page headers: Bodoni `text-5xl` plus a short Inter subtitle.
 - **Chips/Tags:** Simple text surrounded by a thin border (4px radius), using the `label-sm` typographic style (`chip` in `ui.ts`).
 - **Lists (admin):** Prefer a vertical stack of soft cards (orders, similar entity lists) over a single bordered table shell. Empty states are a muted text line, not an empty card.
 - **Image Gallery:** Implement variable aspect ratios (mix of portrait and landscape) within the grid to reinforce the editorial aesthetic.
