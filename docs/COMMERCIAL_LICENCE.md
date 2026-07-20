@@ -4,7 +4,7 @@
 
 This Commercial Use Licence ("Licence") applies to photographs from a session with Double Tree ("the Photographer") where the Client has purchased or negotiated commercial usage rights. It supplements the Personal Print Licence for the specific Images and uses agreed in writing. "The Client" means the person or legal entity named in the Usage Schedule; it does **not** include parent companies, subsidiaries, or affiliates unless the Usage Schedule says otherwise. By using the delivered images ("the Images") for any commercial purpose, the Client agrees to the terms below.
 
-Commercial use is **not** granted automatically. It is available as an option with the Editorial session and by separate agreement for other sessions. The specific **scope, term, and territory** of each commercial engagement are set out in the accompanying quote or booking confirmation ("the Usage Schedule"), which must be **accepted by the Client in writing** and forms part of this Licence.
+Commercial use is **not** granted automatically. It is available by separate agreement (including commercial day-rate bookings) for sessions where usage is quoted in the Usage Schedule. The specific **scope, term, and territory** of each commercial engagement are set out in the accompanying quote or booking confirmation ("the Usage Schedule"), which must be **accepted by the Client in writing** and forms part of this Licence.
 
 ---
 

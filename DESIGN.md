@@ -94,60 +94,182 @@ spacing:
   margin-mobile: 24px
   margin-desktop: 64px
   section-gap: 160px
+shapes:
+  border-radius-sm: 4px
+  border-radius-md: 8px
+  border-radius-lg: 12px
 ---
 
-## Brand & Style
+# Obsidian & Ivory
 
-The design system is rooted in the high-end editorial world, merging the precision of a modern art gallery with the tactile luxury of a prestige fashion magazine. It targets a discerning clientele in the photography and creative arts sectors, emphasizing the work as the primary focus through a strict "less is more" philosophy.
+Canonical design system for the Eyes of Forest portfolio site and the Grain Issue / Double Tree client portal. One visual language everywhere: soft editorial monochrome with photography as the only source of hue.
 
-The visual style is **Minimalist** with a focus on **compositional tension**. It utilizes large blocks of negative space, razor-sharp edges, and deliberate asymmetry to create an atmosphere of quiet confidence and sophisticated restraint. The emotional response is one of exclusivity, clarity, and timelessness.
+Implementation lives in `client-portal/src/styles.css` (tokens), `client-portal/src/lib/ui.ts` (class recipes), and `client-portal/src/components/ui/*` (primitives).
 
-## Colors
+## Brand principles
 
-The palette is strictly monochrome to ensure the photography remains the only source of hue.
+Rooted in the high-end editorial world: modern art gallery precision meets prestige fashion magazine restraint. Strict "less is more." Large negative space, softly rounded edges (editorial radius scale, never pill-shaped), deliberate asymmetry. Emotional tone: exclusivity, clarity, timelessness.
 
-- **Primary:** Deepest Black (#000000) for high-impact typography and structural lines.
-- **Secondary:** Pure White (#FFFFFF) used for the primary canvas and negative space.
-- **Neutral High:** Gainsboro and Light Grey (#F5F5F5) for subtle background shifts and container separation without breaking the minimalist flow.
-- **Neutral Low:** Mid-range Greys (#757575) reserved for secondary metadata and disabled states.
+**Photography is the only source of color.** UI chrome stays monochrome. Interactive states use opacity, weight, or tonal fills. Never hue shifts for status, buttons, or links.
 
-Interactive states should never introduce color; instead, use opacity shifts or weight changes to signal engagement.
+## Surface modes
 
-## Typography
+Surface modes change **layout width and density only**. They share one visual language (soft cards, same radius scale, same tokens).
 
-The typographic system relies on a high-contrast pairing. **Bodoni Moda** provides the editorial "voice"-elegant, vertical, and commanding. It is used exclusively for headers and large quotes. **Inter** serves as the functional anchor, providing a neutral, highly legible sans-serif for body copy and UI elements.
+| Mode | Max width | Density | Typical pages |
+|------|-----------|---------|---------------|
+| Marketing (apex) | `max-w-6xl` | Airy section gaps (`section-gap`) | Landing, pricing, about, compare |
+| Client portal | `max-w-2xl` to `max-w-3xl` (gallery up to `max-w-5xl` / `1152px`) | Intimate, photo-first | Portal home, board, schedule, gallery |
+| Admin | `w-[80%]` denser stacks | Quiet studio ops desk | Pipeline, calendar, shoot detail, settings |
+| Auth | `max-w-[448px]` centered card | Calm, exclusive | Login, signup |
 
-- **Display & Headlines:** Should be set with tight tracking to emphasize the high-contrast strokes of the serif.
-- **Body Copy:** Set with generous line height (1.5x - 1.8x) to maintain a feeling of airiness and luxury.
-- **Labels:** Always capitalized with wide tracking (+10%) to function as architectural markers rather than just text.
+## Tokens
 
-## Layout & Spacing
+### Colors (product CSS)
 
-The layout follows a **Fluid Grid** model with significant intentional breaks. While a 12-column structure exists for alignment, elements should frequently be offset to create an asymmetrical, "scanned magazine" look.
+| Token | Hex | Use |
+|-------|-----|-----|
+| background | #f9f9f9 | Page canvas |
+| foreground | #1a1c1c | Primary text |
+| primary | #000000 | Filled buttons, headings accent |
+| primary-foreground | #ffffff | Text on black |
+| secondary | #5d5f5f | Metadata, subtitles |
+| muted | #eeeeee | Subtle fills, progress track |
+| card | #ffffff | Cards, sticky bars |
+| outline / border | #7e7576 | Hairlines, dashed empty states |
+| surface-container | #eeeeee | Hover fills, tonal layers |
+| surface-container-high | #e8e8e8 | Elevated tonal fill |
+| destructive | #ba1a1a | Errors only (left border + text, never full hue backgrounds) |
 
-- **Negative Space:** Use `section-gap` between major content blocks to allow the eye to rest.
-- **Asymmetry:** Align text to the left 4 columns while placing imagery in the right 6 columns, leaving the remaining space empty.
-- **Mobile:** Transition to a single-column stack with reduced margins, but maintain the vertical spacing to preserve the premium feel.
+### Typography
 
-## Elevation & Depth
+- **Bodoni Moda** (`font-display`): page titles, shoot names, prices, 404. Tight tracking. Scale: marketing `text-6xl`, admin `text-5xl`, client `text-4xl`, section `text-2xl`.
+- **Inter** (`font-sans`): body, forms, metadata, admin tables.
+- **Labels** (`label` recipe): uppercase, +10% letter-spacing. Architectural markers ("YOUR SHOOTS", "PHOTO SELECTION", nav).
 
-Depth is achieved primarily through **Tonal Layers**. Two surface treatments are allowed:
+### Spacing
 
-- **Editorial surfaces** (marketing, galleries, quote accept): flat fills and hairline rules (`border-y` / `divide-y`). No filled card shells; no shadows. High-tier overlays (modals, lightboxes, nav) use a 95% opaque white layer or a stark 1px solid black border.
-- **Admin interactive surfaces** (pipeline cards, order rows, calendar panels): soft cards - `rounded-xl`, `1px` hairline (`border-black/10`), `bg-card`, and a subtle `shadow-sm`. This is the shared `card` recipe in `client-portal/src/lib/ui.ts`. Hover may shift to a tonal fill (`bg-surface-container`); never introduce color.
-- **Transitions:** Prefer opacity, weight, or a subtle 4px vertical slide over lighting effects. Button fill swaps stay instant and crisp.
+8px unit. Mobile margin 24px (`px-margin-mobile`), desktop 64px (`px-margin`). Gutter 32px. Section gap 160px (`mt-section` / `py` section blocks). Sticky header 64px.
 
-## Shapes
+### Radius (editorial scale)
 
-The shape language is a restrained **editorial radius scale**: chips/tags 4px (`rounded-sm`), buttons 8px (`rounded-md`), admin cards and panels 12px (`rounded-xl`) - tokens live in `client-portal/src/styles.css` and recipes in `client-portal/src/lib/ui.ts`. Corners are softened just enough to feel considered, never pill-shaped or playful - the precision of a printed photograph still governs proportions. Circular elements are permitted only for specific functional icons (e.g., a play button) but should be avoided for structural UI elements.
+| Token | Size | Use |
+|-------|------|-----|
+| `rounded-sm` | 4px | Chips, tags, status badges |
+| `rounded-md` | 8px | Buttons, inputs, small cards |
+| `rounded-lg` / `rounded-xl` | 12px | Panels, modals, admin cards |
+
+Never pill-shaped (`rounded-full`) on structural UI. Circles only for functional icons (avatar initials, play, lightbox heart).
+
+## Elevation & depth
+
+**One soft card system for all surfaces** (marketing, client, admin):
+
+- Recipe: `rounded-xl border border-border/40 bg-card shadow-sm` (or `card` in `ui.ts` / `<Card>`)
+- Hover: tonal fill (`bg-surface-container`) or light `shadow` bump. Never introduce hue.
+- Hairline dividers: prefer `border-border/40` over hard `border-primary` grids.
+- Overlays (modals, lightboxes, sticky chrome): white card or 95% opaque white layer.
+
+**Photo overlays:** gradients are allowed **only** over photography to preserve text legibility, e.g. `bg-gradient-to-t from-black/70 via-black/40 to-black/30`. Do not use decorative gradient backgrounds on empty chrome.
 
 ## Components
 
-- **Buttons:** Rectangular (8px radius) with a 1px solid black border. On hover, the button fills solid black with white text. No transition easing-interaction should be instant and crisp.
-- **Inputs:** A single 1px black bottom line, no fill. The label sits in `label-sm` style above the line. Error states are indicated by a 2px stroke rather than a color change.
-- **Navigation:** Minimalist text-only links. Use a strike-through or a weight change for the active state.
-- **Cards (editorial / gallery):** No borders or shadows. The image takes 100% width, with typography placed either immediately below or slightly overlapping in a high-contrast treatment.
-- **Cards (admin):** Soft interactive tiles using the `card` recipe - light hairline border, subtle shadow, 12px radius, `p-4` padding, stacked with `gap-4`. Primary identity (client name) uses Bodoni at `text-xl`; secondary markers (shoot type, column headers) use `label-sm`; dates and body meta stay plain Inter `text-xs` (not uppercase). Page headers: Bodoni `text-5xl` plus a short Inter subtitle.
-- **Chips/Tags:** Simple text surrounded by a thin border (4px radius), using the `label-sm` typographic style (`chip` in `ui.ts`).
-- **Lists (admin):** Prefer a vertical stack of soft cards (orders, similar entity lists) over a single bordered table shell. Empty states are a muted text line, not an empty card.
-- **Image Gallery:** Implement variable aspect ratios (mix of portrait and landscape) within the grid to reinforce the editorial aesthetic.
+### Button
+
+Use `<Button>` from `components/ui/button.tsx`. Rectangular (`rounded-md`), uppercase label typography.
+
+- **default:** black fill, white text, `hover:opacity-90`
+- **outline:** hairline border, `hover:bg-surface-container`
+- **ghost:** secondary text, `hover:text-primary`
+- **destructive:** tonal destructive fill, never solid red chrome
+
+Do not invent inline invert-hover buttons. Prefer `<Button>` over class recipes.
+
+### Input
+
+Use `<Input>` from `components/ui/input.tsx`:
+
+| Variant | When |
+|---------|------|
+| `underline` | Client-facing forms (book, inquiry): bottom line only |
+| `field` | Admin shoot/gallery forms: soft filled `rounded-lg border-border/40` |
+| `default` | Compact shadcn-style fields |
+
+Labels always visible in `label` / `fieldLabel` style. Errors: 2px destructive left border on the message, not a hue change on the input fill.
+
+### Chip / Badge
+
+Rectangular (`rounded-sm`), thin border or tonal monochrome fill. Use `chip` recipe or `<Badge>`. Status variants stay greyscale (surface / primary / accent / destructive tonal). No green/yellow/red pills.
+
+### Card
+
+`<Card>` or `card` recipe: soft interactive tiles, generous padding, optional Bodoni title. Invert variant (`bg-primary text-primary-foreground`) for delivery panels only.
+
+### Navigation
+
+Text-only `label` links. Active / hover: strikethrough (`navLink` / `navLinkActive`). Sticky header: 64px, hairline bottom border (`border-border/40` or soft equivalent).
+
+### Selection bar (proofing)
+
+Sticky soft card (`selectionBar` recipe): progress track muted, fill primary. Submit = solid `<Button>`.
+
+### Marketing sections
+
+Prefer soft section shells (`marketingSection` recipe) or hairline `border-border/40` over hard black `border-primary` divide grids. Pricing cards may invert featured plan to primary fill.
+
+### Pipeline / admin lists
+
+Soft card stacks. Column headers: `label` + count. Drag-over: `bg-surface-container`. Empty states: muted text or dashed soft border, not an empty hard shell.
+
+### Image gallery
+
+Masonry with mixed aspect ratios. Lightbox: minimal chrome. Selected: filled heart icon (circle OK for icon hit target).
+
+## Motion
+
+Allowed: `transition-colors`, `transition-shadow`, subtle fade/slide (`fadeUp`), opacity. Forbidden: playful bounce, large scale transforms on structural UI, glassmorphism, glow.
+
+## Do / Don't
+
+**Do**
+
+- Soft cards with `shadow-sm` and `border-border/40`
+- Editorial radius scale (`rounded-sm` / `md` / `xl`)
+- Photo gradient overlays for hero legibility
+- `<Button>`, `<Card>`, `<Input>`, `<Badge>` for new work
+- Monochrome tonal status chips
+
+**Don't**
+
+- Hard `border-primary` structural grids on new screens
+- `rounded-full` on chips, badges, buttons, or cards
+- Hue status colors (`bg-green-*`, `bg-red-500`, emerald, etc.)
+- Decorative gradient backgrounds on empty chrome
+- Glassmorphism or heavy `shadow-lg` as default elevation
+- Sidebar nav for client portal (top nav only)
+- Password fields (magic link / OTP only)
+
+## Code mapping
+
+| Spec | Code |
+|------|------|
+| Tokens / radius | `client-portal/src/styles.css` |
+| `label`, `chip`, `card`, `input`, `navLink`, `fieldLabel`, `cardTitle`, `selectionBar`, `marketingSection` | `client-portal/src/lib/ui.ts` |
+| Button | `client-portal/src/components/ui/button.tsx` |
+| Input variants | `client-portal/src/components/ui/input.tsx` |
+| Card | `client-portal/src/components/ui/card.tsx` |
+| Badge | `client-portal/src/components/ui/badge.tsx` |
+
+## Client portal appendix
+
+Product context for Grain Issue / studio-branded portals:
+
+- **Apex** (`grainissue.com`): product marketing under Grain Issue brand.
+- **Tenant** (`{slug}.grainissue.com` or custom domain): studio front door + portal. Studio logo/name lead; Grain Issue stays quiet.
+- Wordmark: studio name or product name in Bodoni uppercase. No separate logo mark required.
+- Auth: magic link / email OTP only.
+- Currency: CAD by default (studio-configurable).
+- Tone: first person from photographer where client-facing; spare, editorial, not corporate SaaS.
+- Accessibility: WCAG AA contrast; errors use border weight + text; touch targets ≥44px on gallery actions; labels always visible.
+
+Reference implementations (soft system): login, signup, book, studio landing, portal home, schedule, pipeline.

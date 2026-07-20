@@ -50,7 +50,7 @@ If the Client wishes to keep their session **private**, they must request this i
 
 ## 6. Commercial Use
 
-Commercial use of the Images is **not** included in the Starter, Studio, or Film sessions or this Personal Print Licence. If the Client wishes to use any Image commercially, a separate **Commercial Licence** must be negotiated and agreed in writing, with fees based on the scope, duration, and territory of the intended use. Commercial licensing is available on request and is included as an option with the Editorial session.
+Commercial use of the Images is **not** included in the Headshot, Portrait, or Film sessions or this Personal Print Licence. If the Client wishes to use any Image commercially, a separate **Commercial Licence** must be negotiated and agreed in writing, with fees based on the scope, duration, and territory of the intended use. Commercial licensing is available on request.
 
 ## 7. Delivery and Availability
 
