@@ -17,6 +17,7 @@ import type {
   ClientGalleryView,
   PrintProduct,
 } from "./clientGalleryTypes";
+import { PRINTS_ENABLED } from "./print-flag";
 import {
   galleryFavoritesKey,
   galleryManifestKey,
@@ -315,6 +316,9 @@ export const createClientCheckoutSession = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     if (!(await requireSession(data.slug))) {
       return { url: null as string | null, error: "Unauthorized" };
+    }
+    if (!PRINTS_ENABLED) {
+      return { url: null as string | null, error: "Prints are coming soon." };
     }
 
     const manifest = await loadManifest(data.slug);

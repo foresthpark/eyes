@@ -31,7 +31,7 @@ Under this Licence, the Client **may not**:
 - Use the Images for any **commercial, promotional, or advertising purpose**, including but not limited to business websites, paid advertising, product packaging, brand or company social media accounts, printed marketing materials, or any use intended to generate revenue or promote goods or services.
 - **Sell, license, sublicense, or transfer** the Images (or the right to use them) to any third party, except to engage a print lab or print service as permitted in Section 2.
 - Enter the Images into **contests**, or submit them to stock libraries, agencies, or publications.
-- Apply **filters, AI processing, or edits** that materially alter the Photographer's original edit before public display, or use the Images to train machine-learning or generative-AI systems.
+- Except for cropping or rotation as permitted in Section 2, **alter, edit, filter, composite, or apply AI processing** to the Images in any way that **misrepresents** the Photographer's work or original edit, or use the Images to train machine-learning or generative-AI systems.
 - **Remove, crop out, or obscure** any watermark, credit, or metadata where present.
 
 Any use beyond the scope of Section 2 requires a separate **Commercial Licence** (see Section 6).
