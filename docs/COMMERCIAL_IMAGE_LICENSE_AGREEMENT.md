@@ -1,6 +1,20 @@
 # COMMERCIAL IMAGE LICENSE AGREEMENT
 **Double Tree Studio Inc.**
 
+> **Paper / offline twin of the platform Commercial Use Licence.** This document is the source of
+> truth for the licence prose. The platform version lives in
+> [`api/src/lib/licences/commercial-terms.ts`](../../api/src/lib/licences/commercial-terms.ts) and is
+> a generified copy of it: same 17 sections, same numbering, with `{{BRAND}}` substitution, Usage
+> Schedule references in place of the inline count and fee in Section 3, and portal clickwrap in
+> place of the signature block. Two deliberate deviations, because the platform is multi-tenant:
+> Section 10 uses jurisdiction-neutral consent rather than a Copyright Act (Canada) waiver, and
+> Section 16 points at the photographer's place of business rather than BC.
+>
+> The Usage Schedule fields map to a licence product and its checkout: Section 2 Media →
+> `licence_products.media`, Section 3 count and fees → `package_count` / `package_price_cents` /
+> `price_cents`, Section 4 Term → `term_months` and the grant's start date, Section 5 → `exclusive`,
+> Section 1 Images → the selected photo keys printed on the licence PDF.
+
 This Commercial Image License Agreement ("Agreement") is made between Double Tree Studio Inc. (BC1542381), Vancouver, British Columbia, Canada ("Photographer"), and the client identified below ("Client"), and governs Client's licensed use of the photographic images described herein.
 
 **PHOTOGRAPHER**

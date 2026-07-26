@@ -1,114 +1,120 @@
 # Commercial Use Licence
 
-**Double Tree Photography - Commercial Licence Agreement**
+**{{BRAND}} - Commercial Use Licence**
 
-This Commercial Use Licence ("Licence") applies to photographs from a session with Double Tree ("the Photographer") where the Client has purchased or negotiated commercial usage rights. It supplements the Personal Print Licence for the specific Images and uses agreed in writing. "The Client" means the person or legal entity named in the Usage Schedule; it does **not** include parent companies, subsidiaries, or affiliates unless the Usage Schedule says otherwise. By using the delivered images ("the Images") for any commercial purpose, the Client agrees to the terms below.
+This Commercial Use Licence ("Licence") is made between {{BRAND}} ("the Photographer") and the client identified in the Usage Schedule ("the Client"), and governs the Client's licensed use of the photographic images described in the Usage Schedule.
 
-Commercial use is **not** granted automatically. It is available by separate agreement (including commercial day-rate bookings) for sessions where usage is quoted in the Usage Schedule. The specific **scope, term, and territory** of each commercial engagement are set out in the accompanying quote or booking confirmation ("the Usage Schedule"), which must be **accepted by the Client in writing** and forms part of this Licence.
+"The Client" means the person or legal entity named in the Usage Schedule. It does **not** include parent companies, subsidiaries, or affiliates unless the Usage Schedule says otherwise.
+
+The **Usage Schedule** is the record of the specific licence purchased: the licensed Images, media, territory, term, exclusivity, and fee. It is generated at checkout, forms part of this Licence, and prevails over this Licence where the two conflict. The Client accepts this Licence and the Usage Schedule by confirming agreement in the Photographer's client portal and completing payment.
 
 ---
 
-## 1. Grant of Licence
+## 1. Licensed Images
 
-Upon full payment of the applicable commercial fee, the Photographer grants the Client a **non-exclusive, non-transferable licence** to use the Images for **commercial purposes** as defined in the Usage Schedule.
+This Licence covers the photographic images listed in the Usage Schedule (the "Images"), as selected and delivered by the Photographer to the Client following final selection. Low-resolution proofs, comps, or watermarked previews are not licensed for commercial use under this Licence.
 
-Unless the Usage Schedule states otherwise:
+## 2. Grant of Licence
 
-- **Territory:** worldwide
-- **Term:** two (2) years from the date of delivery
-- **Media:** the Client's own digital and print marketing channels
+The Photographer grants the Client a licence to use the Images for the commercial and advertising purposes identified in the **Media** field of the Usage Schedule, within the **Territory** and for the **Term** stated there, subject to the terms below. This is a usage licence, not a transfer of copyright. The Photographer retains full copyright ownership of the Images.
 
-Exclusivity, extended terms, or industry buy-outs are available at additional cost and must be stated in the Usage Schedule.
+The following uses are **not** included unless they are listed in the Media field of the Usage Schedule, and otherwise require a separate written agreement and fee: product packaging, large-format out-of-home (billboard or transit) advertising, broadcast or streaming television, editorial or press placement, merchandising, resale, and third-party licensing.
 
-## 2. Permitted Uses
+Regardless of what the Usage Schedule states, the Images may not be used to train, fine-tune, or input into machine-learning or generative-AI systems (for example generative fill, AI upscaling, or AI ad-variant generation). Ordinary posting of the Images to permitted social media and advertising platforms is not a breach of this paragraph.
 
-Subject to the Usage Schedule, the Client **may** use the Images for:
+The Client may permit its own contractors (for example agencies, designers, or developers acting on the Client's behalf) to use the Images solely for the licensed purposes. Any such contractor must be bound by the same restrictions as the Client and must delete the Images when their engagement ends. The Client remains liable for any breach by its contractors.
 
-- Business websites, landing pages, and email marketing.
-- Paid and organic advertising, including social media, display, and print.
-- Brand and company social media accounts.
-- Printed marketing collateral such as brochures, signage, and packaging.
-- Internal corporate materials and presentations.
+## 3. Number of Images and Fees
 
-**Internal and archival use is perpetual**: the Client may keep the Images in internal materials, presentations, and archives after the Term ends. All other permitted uses end with the Term (see Section 4).
+- The number of Images licensed, the licence fee, and any package and per-image rates are as stated in the Usage Schedule.
+- Where the Usage Schedule states a package, the package fee covers up to the stated number of Images, and each additional Image is charged at the per-image rate.
+- Fees are for licensing and usage rights only, and are separate from any creative or shoot fee agreed under a separate shoot agreement or invoice.
+- Fees are exclusive of applicable taxes. Taxes are added where required by law.
 
-The Client may make reasonable **cropping and colour adjustments** to fit layouts, provided the edits do not misrepresent the subject or the Photographer's work.
+## 4. Term and Sell-Off
 
-## 3. Prohibited Uses
+This Licence is granted for the Term stated in the Usage Schedule, running from the licence start date stated there. If no licence start date is stated, the Term starts on the date the Photographer first delivers final high-resolution files for the licensed Images.
 
-Even under this Licence, the Client **may not**:
+Upon expiration of the Term, unless renewed in writing, the Client must cease all public and commercial use of the Images, including websites, social media, and paid advertising, except:
 
-- Use the Images **beyond the scope, term, or territory** set out in the Usage Schedule.
-- **Sell, sublicense, redistribute, or transfer** the Images (or the right to use them) to any third party, except to the Client's own contractors acting on the Client's behalf. Any such contractor must be **bound by the same restrictions** as the Client and must delete the Images when their engagement ends; the Client remains **liable for any breach by its contractors**.
-- Submit the Images to **stock libraries** or make them available for others to license.
-- Use the Images in a manner that is **defamatory, unlawful, or misleading**, or that implies endorsement by any depicted person without their consent.
-- Use the Images to **train or fine-tune machine-learning or generative-AI systems, or input them into such systems** (for example, generative fill, AI upscaling, or AI ad-variant generation). Ordinary posting of the Images to permitted social media and advertising platforms is not a breach of this clause.
-- **Remove or alter** copyright metadata embedded in the Images.
+- **Internal and archival:** the Client may keep the Images in internal materials, presentations, and archives after the Term ends (not for public or commercial use); and
+- **Print sell-off:** printed materials already produced and in circulation at the end of the Term may continue to be distributed for a sell-off period of ninety (90) days (the "Sell-Off Period"), after which distribution must stop or be renewed.
 
-## 4. Term Expiry and Sell-Off
+Existing digital placements (websites, social posts, and paid ads) must be removed or renewed within thirty (30) days after Term end. The Photographer will offer the Client the option to renew at then-current rates prior to expiration.
 
-All use of the Images (other than the perpetual internal and archival use in Section 2) must **cease when the Term ends**. Printed materials already produced and in circulation at the end of the Term may continue to be distributed for a **sell-off period of ninety (90) days**, after which they may no longer be distributed. Renewals or expansions of use are handled under Section 10.
+## 5. Exclusivity
 
-## 5. Copyright and Ownership
+This Licence is non-exclusive unless the **Exclusivity** field of the Usage Schedule states otherwise. Where the Licence is non-exclusive, the Photographer retains the right to license the Images to other parties.
 
-The Photographer **retains full copyright** and ownership of all Images at all times, in accordance with the _Copyright Act_ (R.S.C., 1985, c. C-42) of Canada. This Licence grants commercial usage rights only and does **not** transfer copyright or ownership. All rights not expressly granted are reserved by the Photographer.
-
-## 6. Moral Rights
-
-The Photographer **asserts their moral rights** in the Images. The Photographer consents only to the modifications expressly permitted in Section 2; any other modification, distortion, or use of the Images in association with a product, service, cause, or institution requires the Photographer's prior written consent.
-
-## 7. Model and Property Releases
-
-The Client is responsible for ensuring that appropriate **model and property releases** are in place for the intended commercial use where the Images depict identifiable people or private property. The Photographer may assist in coordinating releases but does not warrant that any release is sufficient for the Client's specific use.
-
-## 8. Photographer's Rights
-
-The Photographer retains the right to use the Images for **portfolio, promotional, and marketing purposes**, including the Photographer's website, social media, printed portfolio, and submissions to competitions or publications, unless a written exclusivity or confidentiality agreement states otherwise.
+In all cases the Photographer retains the right to use the Images for the Photographer's own portfolio, self-promotion, and marketing purposes, including the Photographer's website, social media accounts, printed portfolio, and submissions to competitions or publications, without additional compensation to the Client, unless a written exclusivity or confidentiality agreement states otherwise.
 
 The Photographer may also capture and use **behind-the-scenes media** - including photographs and video of the session, its setup, and the shooting process - for the Photographer's own marketing, portfolio, social media, and educational content. This may incidentally include the Client's likeness and products. The Client consents to this use unless they opt out in writing before the session.
 
-## 9. Credit
+## 6. Restrictions
 
-Photographer credit ("Photography by Double Tree") is appreciated where practical but is not required for commercial use unless stated in the Usage Schedule.
+Under this Licence, the Client **may not**:
 
-## 10. Fees and Payment
+- **Sell, sublicense, or transfer** the Images to any third party as standalone stock content, or submit them to stock libraries or any service that makes them available for others to license.
+- Claim **copyright ownership** of the Images.
+- **Remove or alter** copyright metadata embedded in the Images.
+- Use the Images in a manner that is **defamatory, unlawful, or misleading**, or that implies endorsement by any depicted person without their consent.
+- Use the Images **beyond what is described in Section 2 and the Usage Schedule**; any such use requires a separate written agreement.
 
-Commercial fees are quoted per engagement based on the scope, term, territory, and exclusivity requested. The commercial licence takes effect only once the applicable fee has been paid in full. Fees are **non-refundable** once the Images have been delivered. Renewals or expansions of use require a new or amended Usage Schedule and additional fees.
+## 7. Model and Property Releases
 
-## 11. Unauthorized Use
+Where the Images include identifiable individuals or private property, use under this Licence is contingent on a valid, signed **model or property release** covering the intended commercial use.
 
-Any use of the Images **beyond the scope, term, or territory** of the Usage Schedule will be invoiced at **three (3) times** the Photographer's standard fee for that use. Payment of this fee does not grant continuing rights and does not waive any other remedy available to the Photographer, including under the _Copyright Act_.
+The Client is responsible for obtaining the required releases unless the Photographer confirms otherwise in writing. Releases collected through the Photographer's client portal for this session satisfy that responsibility to the extent they cover the intended use. The Photographer does not warrant that any release is sufficient for the Client's specific use where the Client is responsible for securing releases.
 
-## 12. Warranties
+## 8. Credit
 
-The Images are provided **"as is"**. The Photographer does not warrant that the Images are free of third-party rights - including trademarks, artwork, designs, or property visible in frame - and makes no other warranty, express or implied, beyond having the right to grant this Licence.
+Where practical, the Client agrees to credit the Photographer ("Photography by {{BRAND}}") on website image credits and social media posts. Credit is not required for e-commerce product listings or paid advertising placements.
 
-## 13. Indemnity
+## 9. Payment
 
-The Client will **indemnify and hold harmless** the Photographer against any claims, losses, damages, and reasonable legal costs arising from the Client's use of the Images, including use beyond the licensed scope, use without a sufficient model or property release, and any breach of this Licence by the Client or its contractors.
+Licence fees, plus applicable taxes, are due at checkout in the Photographer's client portal unless otherwise agreed in writing. This Licence takes effect only once the applicable fee has been paid in full. Use of the Images under this Licence, including any commercial use of proofs or comps, is conditional on payment in full. Unpaid use is unauthorized use under Section 12.
 
-## 14. Liability
+## 10. Moral Rights
 
-The Photographer's total liability under this Licence is limited to the total fees paid by the Client for the commercial licence. The Photographer is not liable for any indirect or consequential loss arising from the Client's use of the Images. This limitation applies to the Photographer's liability only; it does **not** limit the Client's indemnity (Section 13), fees owed, or liability for use beyond the licensed scope.
+The Photographer consents to the modifications reasonably necessary for the Client's licensed uses under Section 2, including reasonable cropping, colour correction, and compositing consistent with ordinary commercial practice. Material alterations that distort the Images, or use that prejudices the Photographer's honour or reputation, still require the Photographer's prior written consent.
 
-## 15. Termination
+## 11. Warranties
 
-The Photographer may **terminate this Licence** by written notice if the Client materially breaches it and fails to remedy the breach within fourteen (14) days of notice. On termination, the Client must **immediately cease all use** of the Images (including the sell-off period). Fees paid are non-refundable. Sections 5, 6, 11, 12, 13, and 14 survive termination or expiry.
+The Images are provided **"as is"**. The Photographer does not warrant fitness for a particular marketing result, and does not warrant that the Images are free of third-party rights - including trademarks, artwork, designs, or property visible in frame - beyond the Photographer's right to grant this Licence. The Client is responsible for clearance of Client-owned elements (logos, products, locations, claims) not supplied by the Photographer.
 
-## 16. General
+## 12. Unauthorized Use
 
-- **Entire agreement:** this Licence and the Usage Schedule are the entire agreement for commercial use of the Images and replace any prior discussions.
+Any use of the Images outside this Licence, or after the Term (and any applicable Sell-Off Period or digital takedown window) without renewal, constitutes copyright infringement. The Photographer may seek injunctive relief and damages. Continued use after written notice of expiry or breach may be invoiced at **three (3) times** the Photographer's then-current commercial rate for that use. Payment of that fee does not grant continuing rights and does not waive any other remedy available to the Photographer under applicable copyright law.
+
+## 13. Termination for Breach
+
+The Photographer may **terminate this Licence** by written notice if the Client materially breaches it and fails to cure within fourteen (14) days of notice. Unauthorized commercial use or non-payment may be treated as material breach with **immediate termination** on written notice, with no cure period. On termination, the Sell-Off Period and digital takedown window end, and the Client must **immediately cease all use** of the Images. Fees paid are non-refundable. Sections 6, 10, 11, 12, 14, and 15 survive termination or expiry.
+
+## 14. Indemnity
+
+The Client will **indemnify and hold harmless** the Photographer against any claims, losses, damages, and reasonable legal costs arising from the Client's use of the Images outside the scope of this Licence, the Client's failure to obtain required releases where the Client was responsible, the Client's advertising claims, products, or services, or any breach of this Licence by the Client or its contractors.
+
+## 15. Limitation of Liability
+
+Except for intentional misconduct or the Photographer's infringement of the Client's rights, the Photographer's total liability under this Licence is limited to the licence fees paid under this Licence. Neither party is liable for indirect, incidental, special, or consequential damages. This limitation applies to the Photographer's liability only; it does **not** limit the Client's indemnity (Section 14), fees owed, or liability for unauthorized use (Section 12).
+
+## 16. Governing Law
+
+This Licence is governed by the laws of the state, province, or territory in which the Photographer's business is based, together with the applicable national laws of that country. The parties submit to the **exclusive jurisdiction of the courts of that jurisdiction**.
+
+## 17. Entire Agreement
+
+- **Entire agreement:** this Licence and the Usage Schedule are the entire agreement between the Client and the Photographer regarding image licensing for this shoot, and replace any prior discussions.
 - **Order of precedence:** if documents conflict, the Usage Schedule prevails over this Licence, which prevails over the Personal Print Licence.
 - **Amendments:** changes are effective only if agreed in writing.
 - **Assignment:** the Client may not assign this Licence without the Photographer's written consent.
-- **Severability:** if any provision is unenforceable, the rest of the Licence remains in effect.
-
-## 17. Governing Law
-
-This Licence is governed by the laws of the Province of **British Columbia** and the applicable laws of Canada. The parties submit to the **exclusive jurisdiction of the courts of British Columbia**.
+- **Severability:** if any provision is unenforceable, the rest of this Licence remains in effect.
+- **Survival:** Sections 6, 10, 11, 12, 14, and 15 survive expiry or termination.
 
 ---
 
-_By using the delivered Images for any commercial purpose, the Client acknowledges that they have read, understood, and agreed to the terms of this Commercial Use Licence and the accompanying Usage Schedule._
+_By confirming agreement in the Photographer's client portal (or an equivalent electronic process) and completing payment, the Client acknowledges that they have read, understood, and agreed to the terms of this Commercial Use Licence and the accompanying Usage Schedule. Electronic acceptance and payment constitute written acceptance._
 
-**Double Tree** · Vancouver, BC
+**{{BRAND}}**
+
+_Sample document, not legal advice. Have a lawyer in your jurisdiction review before relying on it commercially._
