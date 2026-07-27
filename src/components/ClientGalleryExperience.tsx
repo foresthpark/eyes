@@ -293,16 +293,6 @@ export function ClientGalleryExperience({
 					}}
 				/>
 
-				{!PRINTS_ENABLED && (
-					<section className="mt-section border-t border-outline pt-section">
-						<div className="flex items-center gap-3 mb-6">
-							<ShoppingBag className="w-5 h-5" aria-hidden="true" />
-							<h2 className="font-display text-3xl italic">Order prints</h2>
-						</div>
-						<p className="text-sm text-secondary">Coming soon.</p>
-					</section>
-				)}
-
 				{PRINTS_ENABLED &&
 					gallery.storeEnabled &&
 					gallery.printProducts.length > 0 && (
