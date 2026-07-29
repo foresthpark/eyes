@@ -110,7 +110,9 @@ Implementation lives in `client-portal/src/styles.css` (tokens), `client-portal/
 
 Rooted in the high-end editorial world: modern art gallery precision meets prestige fashion magazine restraint. Strict "less is more." Large negative space, softly rounded edges (editorial radius scale, never pill-shaped), deliberate asymmetry. Emotional tone: exclusivity, clarity, timelessness.
 
-**Photography is the only source of color.** UI chrome stays monochrome. Interactive states use opacity, weight, or tonal fills. Never hue shifts for status, buttons, or links.
+**Photography is the only source of color** for brand and chrome. Interactive states use opacity, weight, or tonal fills. Do not invent one-off hue for buttons, links, or decorative chrome.
+
+**Exception: critical money status.** Paid / due / void (and equivalent payment callouts) may use the shared status tones (`success` green, `warning` amber, `danger` red, `neutral` grey) via `<StatusBadge>`, `<StatusCallout>`, and `<StatusPanel>` in `components/ui/status.tsx`. Always pair hue with icon + text. Do not scatter raw `bg-green-*` / `bg-amber-*` classes outside that module.
 
 ## Surface modes
 
@@ -139,7 +141,9 @@ Surface modes change **layout width and density only**. They share one visual la
 | outline / border | #7e7576 | Hairlines, dashed empty states |
 | surface-container | #eeeeee | Hover fills, tonal layers |
 | surface-container-high | #e8e8e8 | Elevated tonal fill |
-| destructive | #ba1a1a | Errors only (left border + text, never full hue backgrounds) |
+| destructive | #ba1a1a | Errors, and the `danger` money-status tone |
+
+Critical money status (see Components → Status) also uses soft green (`green-700`) and amber (`amber-700`) fills through the shared status module only.
 
 ### Typography
 
@@ -199,7 +203,26 @@ Labels always visible in `label` / `fieldLabel` style. Errors: 2px destructive l
 
 ### Chip / Badge
 
-Rectangular (`rounded-sm`), thin border or tonal monochrome fill. Use `chip` recipe or `<Badge>`. Status variants stay greyscale (surface / primary / accent / destructive tonal). No green/yellow/red pills.
+Rectangular (`rounded-sm`), thin border or tonal monochrome fill. Use `chip` recipe or `<Badge>`. Pipeline and non-money status chips stay greyscale (surface / primary / accent / destructive tonal).
+
+### Status (critical money only)
+
+Shared primitives in `components/ui/status.tsx`:
+
+| Primitive | Use |
+|-----------|-----|
+| `<StatusBadge tone icon>` | Paid / unpaid / invoice status chips |
+| `<StatusCallout tone icon title detail action?>` | Standalone notices ("Paid in full", "Paying offline") |
+| `<StatusPanel tone>` | Tinted row wrapper (deposit line, invoice row) |
+
+| Tone | Meaning | Hue |
+|------|---------|-----|
+| `success` | Paid / cleared | Soft green |
+| `warning` | Outstanding / offline / partial | Soft amber |
+| `danger` | Unpaid / void | Destructive red |
+| `neutral` | Draft / informational | Grey tonal |
+
+Rules: icon + label required (never color alone). Prefer these primitives over ad-hoc `bg-green-*` / `bg-amber-*`. Do not use these hues for pipeline stages, nav, or non-money UI.
 
 ### Card
 
@@ -237,13 +260,15 @@ Allowed: `transition-colors`, `transition-shadow`, subtle fade/slide (`fadeUp`),
 - Editorial radius scale (`rounded-sm` / `md` / `xl`)
 - Photo gradient overlays for hero legibility
 - `<Button>`, `<Card>`, `<Input>`, `<Badge>` for new work
-- Monochrome tonal status chips
+- Monochrome tonal chips for pipeline and non-money status
+- `<StatusBadge>` / `<StatusCallout>` / `<StatusPanel>` for paid / due / void
 
 **Don't**
 
 - Hard `border-primary` structural grids on new screens
 - `rounded-full` on chips, badges, buttons, or cards
-- Hue status colors (`bg-green-*`, `bg-red-500`, emerald, etc.)
+- Ad-hoc hue status colors outside `components/ui/status.tsx`
+- Green/amber money hues on pipeline, nav, or decorative chrome
 - Decorative gradient backgrounds on empty chrome
 - Glassmorphism or heavy `shadow-lg` as default elevation
 - Sidebar nav for client portal (top nav only)
@@ -259,6 +284,7 @@ Allowed: `transition-colors`, `transition-shadow`, subtle fade/slide (`fadeUp`),
 | Input variants | `client-portal/src/components/ui/input.tsx` |
 | Card | `client-portal/src/components/ui/card.tsx` |
 | Badge | `client-portal/src/components/ui/badge.tsx` |
+| Critical money status | `client-portal/src/components/ui/status.tsx` (`StatusBadge`, `StatusCallout`, `StatusPanel`) |
 
 ## Client portal appendix
 
